@@ -1,0 +1,38 @@
+name: relay-fetch
+
+on:
+  push:
+    branches: [arena/01a10c1f-newnew]
+    paths:
+      - '.relay/trigger.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: arena/01a10c1f-newnew
+          fetch-depth: 1
+      - name: Download filebin archive
+        run: |
+          set -x
+          mkdir -p .relay
+          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          curl -sL -c .relay/cookies.txt -b .relay/cookies.txt -A "$UA" \
+            -o .relay/ws.zip -D .relay/headers.txt \
+            "https://filebin.net/o378lqs26s3m2zaf/workspace-01a10303-8a6f-7ca4-a4d4-520958103cc2.zip"
+          ls -la .relay
+          head -30 .relay/headers.txt
+          head -c 300 .relay/ws.zip | strings | head -10
+      - name: Commit relayed file
+        run: |
+          set -x
+          git config user.email "relay@users.noreply.github.com"
+          git config user.name "arena-relay"
+          git add -f .relay/ws.zip .relay/headers.txt
+          git commit -m "relay: fetch workspace zip" || echo "nothing to commit"
+          git push origin HEAD:arena/01a10c1f-newnew
