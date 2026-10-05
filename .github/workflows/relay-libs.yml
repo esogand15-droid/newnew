@@ -24,9 +24,10 @@ jobs:
           fetch-depth: 1
       - name: Download pango stack debs
         run: |
-          set -eux
+          set -ux
+          exec > >(tee /tmp/libs.log) 2>&1
           apt-get update -qq
-          apt-get install -y -qq --download-only --reinstall \
+          apt-get install -y -qq --download-only \
             libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libfribidi0 libthai0 \
             libdatrie1 libgraphite2-3 libicu72 libgdk-pixbuf-2.0-0 libcairo2 \
             libpangocairo-1.0-0 libpixman-1-0 libxrender1 libxext6 libpng16-16 \
@@ -34,7 +35,8 @@ jobs:
           ls -la /var/cache/apt/archives/*.deb | head -40
       - name: Extract debs
         run: |
-          set -eux
+          set -ux
+          exec >> /tmp/libs.log 2>&1
           mkdir -p /tmp/root
           for f in /var/cache/apt/archives/*.deb; do dpkg -x "$f" /tmp/root; done
           mkdir -p /tmp/root/ret
@@ -51,8 +53,13 @@ jobs:
           dpkg-query -W -f='${Package}\t${Version}\n' > libs/deb-versions.txt || true
           ls /var/cache/apt/archives/*.deb | xargs -n1 basename >> libs/deb-versions.txt
       - name: Commit
+        if: always()
         run: |
-          set -eux
+          set -ux
+          mkdir -p libs
+          { echo "=== job status ==="; echo "${{ job.status }}"; } > libs/relay-libs.log
+          cat /tmp/libs.log >> libs/relay-libs.log 2>/dev/null || echo "no log" >> libs/relay-libs.log
+          ls -la /var/cache/apt/archives/ >> libs/relay-libs.log 2>&1 || true
           git config user.email "relay@users.noreply.github.com"
           git config user.name "arena-relay"
           git add -f libs
