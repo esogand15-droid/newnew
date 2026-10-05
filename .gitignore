@@ -1,0 +1,8 @@
+# --- large source/binary assets that stay out of git ---
+work/source.pdf
+.relay/ws.zip
+libs/*.tgz
+stage/
+# python caches
+__pycache__/
+*.pyc
