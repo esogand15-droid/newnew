@@ -58,8 +58,8 @@ for pi, items in enumerate(plan):
     bottom = max(b[3] for b in blocks)
     top = min(b[1] for b in blocks)
     footer_line = 841.89 - (5.2 / 25.4 * 72) - 8
-    content_h = 841.89 - (13 / 25.4 * 72) - (18 / 25.4 * 72)
-    fill = (bottom - 13 / 25.4 * 72) / content_h * 100
+    top_pt = 13 / 25.4 * 72
+    fill = (bottom - top_pt) / (footer_line - top_pt) * 100
     over = bottom > footer_line
     txt_pages = norm(page.get_text())
     apx_text += txt_pages

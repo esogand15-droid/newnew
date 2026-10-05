@@ -658,7 +658,7 @@ table{font-size:8.9pt}
 .apx-card{break-inside:avoid;background:#fff;border:1px solid #e2e8f0;border-right:1mm solid #2563eb;border-radius:2mm;padding:1mm 1.7mm 1.1mm;margin:0 0 1.4mm;box-shadow:0 .5mm 1.1mm rgba(15,23,42,.03)}
 .apx-card.grey{border-right-color:#64748b}
 .apx-head{display:flex;align-items:center;gap:1.6mm;direction:rtl}
-.apx-type{font-size:7.6pt;font-weight:600;color:#475569;background:#f1f5f9;border:.4px solid #e2e8f0;border-radius:1.2mm;padding:.15mm 1.3mm;white-space:nowrap}
+.apx-type{font-size:8.5pt;font-weight:600;color:#475569;background:#f1f5f9;border:.4px solid #e2e8f0;border-radius:1.2mm;padding:0 1.2mm;white-space:nowrap;line-height:1.45}
 .apx-h{font-size:8.9pt;font-weight:700;color:#0f172a;line-height:1.3}
 .apx-card p{font-size:8.6pt;line-height:1.45;margin:.4mm 0 0;text-align:justify}
 .apx-ar{font-family:AmiriQuran,serif;font-size:10.5pt;line-height:1.95;text-align:center;direction:rtl;display:block;margin:.7mm 0 0!important;color:#1e1b4b}
