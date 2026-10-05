@@ -1,0 +1,662 @@
+<!doctype html><html lang='fa' dir='rtl'><head><meta charset='utf-8'><title>HumsYar — دانش خانواده و جمعیت</title><style>
+@font-face{font-family:Vazirmatn;src:url("file:///home/user/work/render/fonts/Vazirmatn-Regular.ttf") format("truetype");font-weight:400}
+@font-face{font-family:Vazirmatn;src:url("file:///home/user/work/render/fonts/Vazirmatn-Medium.ttf") format("truetype");font-weight:600}
+@font-face{font-family:Vazirmatn;src:url("file:///home/user/work/render/fonts/Vazirmatn-Bold.ttf") format("truetype");font-weight:700}
+@font-face{font-family:AmiriQuran;src:url("file:///home/user/work/render/fonts/AmiriQuran.ttf") format("truetype");font-weight:400}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:210mm;background:#f0f6ff;font-family:Vazirmatn,sans-serif;color:#1e293b;direction:rtl;}
+body{font-size:9.35pt;line-height:1.55}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;break-after:page;padding:13mm 13mm 18mm;background:#f0f6ff}
+.page:last-child{page-break-after:auto;break-after:auto}
+.paper{background:#f0f6ff}
+h1,h2,h3,p{margin:0}
+.title{font-size:17pt;font-weight:700;color:#0f172a;margin:0 0 2.5mm;line-height:1.28}
+.kicker{font-size:8pt;color:#14b8a6;font-weight:700;margin-bottom:1.5mm}
+.lede{font-size:10pt;color:#334155;margin:0 0 3mm}
+.body{font-size:9.25pt;line-height:1.48}
+.body p{margin:0 0 2mm;text-align:justify}
+.body ul,.body ol{margin:1mm 0 2.5mm;padding-right:5mm}
+.body li{margin:0 0 1.15mm;padding-right:.6mm}
+.body li::marker{color:#14b8a6}
+.body strong,.body b{font-weight:700;color:#0f172a}
+.section{display:flex;align-items:center;gap:2.5mm;color:#2563eb;font-size:12pt;line-height:1.35;margin:3mm 0 1.8mm;font-weight:700;text-align:center}
+.section:before,.section:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#2563eb,#14b8a6)}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:1.5mm 0 2.2mm;font-size:8.45pt;line-height:1.34;border:1px solid #dce6f3;border-radius:2.2mm;overflow:hidden;background:#fff}
+th{background:linear-gradient(90deg,#eefcf9,#edf5ff);font-weight:700;color:#0f172a;text-align:right;padding:1.7mm 2mm;border-bottom:1px solid #dce6f3}
+td{padding:1.45mm 2mm;border-bottom:1px solid #e6edf6;vertical-align:top;text-align:right}
+tr:nth-child(even) td{background:#f7faff}
+tr:last-child td{border-bottom:0}
+.functions td:first-child,.functions th:first-child{width:13mm;text-align:center}
+.functions td:nth-child(2){width:53mm;font-weight:600}
+.callout{margin:2mm 0 2.5mm;padding:2mm 3mm;border-radius:2mm;background:#fff;border-right:1.1mm solid #14b8a6;box-shadow:0 1mm 2mm rgba(15,23,42,.045)}
+.callout p{margin:.6mm 0 0}
+.callout b{color:#0f172a}
+.callout.definition{background:#eff6ff;border-right-color:#2563eb}
+.callout.exam{background:#ecfeff;border-right-color:#14b8a6}
+.callout.remember{background:#f0fdfa;border-right-color:#2dd4bf}
+.callout.caution{background:#f8faff;border-right-color:#64748b}
+.callout.verse{background:#eef7ff;border-right-color:#3b82f6}
+.callout.quran{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #c7d2fe;border-right:1.2mm solid #4f46e5;padding:2.2mm 3mm;margin:2mm 0 2.6mm;}
+.callout.quran .quran-title{display:block;color:#3730a3;font-size:8.5pt;margin-bottom:.7mm;}
+.callout.quran .quran-ar{font-family:AmiriQuran,serif;font-size:11pt;font-weight:400;color:#1e1b4b;text-align:center;direction:rtl;line-height:1.95;margin:.5mm 0 1.1mm!important;}
+.callout.quran .quran-meaning{font-size:8.45pt;line-height:1.4;margin-top:.5mm!important;}
+.callout.quran .quran-note{font-size:7.35pt;color:#475569;line-height:1.35;margin-top:.8mm!important;}
+.callout.hadith{background:#f8fafc;border-right-color:#64748b;}
+.callout.question{background:#f2f8ff;border-right-color:#2563eb}
+.callout.example{background:#fff7ed;border-right-color:#f59e0b}
+.callout.example b{color:#b45309}
+.callout.summary{background:#eafbf7;border-right-color:#14b8a6}
+.small-note{font-size:7.8pt;color:#64748b;margin-top:1.4mm!important}
+.source{position:absolute;bottom:12mm;right:13mm;left:13mm;font-size:7pt;color:#8495ad;border-top:1px solid #dde7f2;padding-top:1.4mm;line-height:1.25}
+.footer{position:absolute;bottom:5.2mm;right:13mm;left:13mm;border-top:1px solid #dde7f2;padding-top:1.2mm;display:flex;justify-content:space-between;align-items:center;color:#8ba0ba;font-size:7.4pt;direction:rtl}
+.footer .brand{direction:ltr}
+.page-no{font-weight:600;color:#55708c}
+.cover,.divider{color:#f8fafc;background:radial-gradient(circle at 77% 12%,rgba(37,99,235,.30),transparent 30%),radial-gradient(circle at 16% 75%,rgba(20,184,166,.22),transparent 33%),linear-gradient(155deg,#050a17 0%,#0a1325 53%,#071721 100%)}
+.cover{padding:12mm 17mm;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cover:before,.divider:before{content:"";position:absolute;width:155mm;height:155mm;border:1px solid rgba(45,212,191,.24);border-radius:50%;left:27mm;top:-52mm;box-shadow:0 0 35mm rgba(37,99,235,.12)}
+.cover .logo{width:75mm;height:75mm;object-fit:contain;margin:2mm 0 1mm;position:relative;z-index:1}
+.cover .brand{font-family:Vazirmatn,sans-serif;font-size:26pt;line-height:1.1;letter-spacing:1.2px;font-weight:700;color:#fff;margin:1mm 0}
+.cover .brand span{color:#2dd4bf}
+.cover .brand-en{font-size:7.5pt;color:#61d8f3;letter-spacing:4px;margin-bottom:4mm;direction:ltr}
+.cover .rule{width:100%;height:1.1mm;background:linear-gradient(90deg,#2563eb,#3b82f6,#14b8a6,#2dd4bf);border-radius:2mm;margin:3mm 0 5mm}
+.cover h1{font-size:27pt;line-height:1.3;color:#fff;font-weight:700;margin:2mm 0}
+.cover .subtitle{font-size:13pt;color:#2dd4bf;margin-top:1mm}
+.cover .bookmeta{font-size:8.3pt;color:#a6b6ca;margin-top:4mm}
+.cover .stats{display:flex;gap:4mm;margin:13mm 0 7mm;position:relative;z-index:1;direction:rtl}
+.cover .stat{width:42mm;height:27mm;border:1px solid rgba(45,212,191,.55);background:rgba(255,255,255,.055);border-radius:3mm;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2mm 7mm rgba(0,0,0,.15)}
+.cover .stat strong{font-size:17pt;color:#2dd4bf;line-height:1.1}
+.cover .stat span{font-size:8pt;color:#c3d0df;margin-top:1mm}
+.cover .bottomnote{position:absolute;bottom:15mm;color:#b8c6d8;font-size:9pt}
+.cover .bottomnote b{color:#2dd4bf}
+.contents{padding-top:14mm}
+.contents h1{font-size:23pt;color:#0f172a;margin-bottom:3mm}
+.contents .toprule{height:1.2mm;background:linear-gradient(90deg,#2563eb,#14b8a6);border-radius:2mm;margin:0 0 8mm}
+.toc-row{display:grid;grid-template-columns:13mm 1fr 31mm;align-items:center;gap:3mm;padding:4.5mm 1mm;border-bottom:1px solid #dbe5f0;min-height:23mm}
+.toc-num{width:11mm;height:11mm;line-height:11mm;padding:0;border-radius:3mm;background:linear-gradient(135deg,#2563eb,#14b8a6);color:#fff;font-weight:700;font-size:13pt;display:block;text-align:center;direction:ltr;unicode-bidi:isolate}
+.toc-title{font-size:11pt;font-weight:700;color:#0f172a}
+.toc-sub{font-size:7.8pt;color:#14a89c;margin-top:1mm}
+.toc-pages{font-size:8.5pt;color:#64748b;text-align:left}
+.roadmap{margin-top:6mm;background:#fff;border:1px solid #e2e8f0;border-radius:3mm;padding:3mm 4mm;box-shadow:0 1mm 3mm rgba(15,23,42,.035)}
+.roadmap h2{font-size:11pt;color:#2563eb;margin:0 0 2mm}
+.roadline{display:flex;gap:1.5mm;align-items:stretch}
+.roaditem{flex:1;background:#f5f9ff;border-radius:2mm;padding:2mm 1.5mm;text-align:center;font-size:7.25pt;color:#334155;line-height:1.35;border-top:1mm solid #14b8a6}
+.roaditem strong{display:block;color:#2563eb;font-size:8pt;margin-bottom:.5mm}
+.contents .small-note{margin-top:3mm!important}
+.divider{padding:20mm 18mm;display:flex;flex-direction:column;align-items:center;text-align:center}
+.divider .pill{background:linear-gradient(90deg,#14b8a6,#2563eb);border-radius:100px;padding:1.5mm 6mm;font-size:8pt;color:white;z-index:1}
+.divider .icon{width:29mm;height:29mm;border-radius:50%;border:1px solid rgba(45,212,191,.65);display:flex;align-items:center;justify-content:center;margin:13mm 0 7mm;background:rgba(8,23,44,.6);z-index:1}
+.divider .icon svg{width:17mm;height:17mm;fill:none;stroke:#48e2cf;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.divider .label{font-size:10pt;color:#75cdf9;margin-bottom:3mm;z-index:1}
+.divider h1{font-size:23pt;line-height:1.35;color:#fff;margin:0 0 3mm;z-index:1}
+.divider .sub{font-size:10pt;color:#36d3c3;z-index:1}
+.divider .meta{font-size:8pt;color:#aabbd0;margin-top:2mm;z-index:1}
+.divider .stats{display:flex;gap:4mm;margin:11mm 0 8mm;z-index:1}
+.divider .stat{width:33mm;height:24mm;border-radius:3mm;border:1px solid rgba(148,163,184,.4);background:rgba(255,255,255,.045);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.divider .stat strong{font-size:15pt;color:#2dd4bf;line-height:1.15}
+.divider .stat span{font-size:7.2pt;color:#afc1d4;margin-top:1mm}
+.divider .topics{margin-top:8mm;display:flex;flex-wrap:wrap;justify-content:center;gap:2.2mm;max-width:150mm;z-index:1}
+.divider .topic{border:1px solid rgba(45,212,191,.28);background:rgba(255,255,255,.035);color:#d8e6f4;padding:2mm 3mm;border-radius:10mm;font-size:8pt}
+.divider .bottomline{position:absolute;bottom:15mm;font-size:8pt;color:#8197af}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4mm;margin:2.5mm 0 4mm}
+.steps.four{grid-template-columns:repeat(4,1fr)}
+.steps div{background:#fff;border:1px solid #dce7f2;border-radius:2mm;padding:3mm;text-align:center}
+.steps b{display:block;color:#2563eb;font-size:10pt;margin-bottom:1mm}
+.steps span{font-size:8.2pt;color:#334155;line-height:1.4}
+/* Print-specific centering: explicit coordinates avoid flex cross-axis bugs in paged RTL layouts. */
+.body{font-size:9.8pt;line-height:1.48}
+table{font-size:8.9pt}
+.title{font-size:18pt}
+.section{font-size:12.5pt}
+.cover{display:block;padding:0}
+.cover:before{width:125mm;height:125mm;left:42.5mm;top:-48mm}
+.cover .logo{position:absolute;top:6mm;left:70mm;width:70mm;height:70mm;margin:0;z-index:2}
+.cover .rule{position:absolute;top:82mm;left:17mm;width:176mm;margin:0}
+.cover .category{position:absolute;top:91mm;left:0;width:100%;text-align:center;font-size:11pt;color:#7dd3fc;font-weight:600}
+.cover h1{position:absolute;top:106mm;left:0;width:100%;text-align:center;font-size:29pt;line-height:1.3;color:#fff;font-weight:700;margin:0}
+.cover .subtitle{position:absolute;top:144mm;left:0;width:100%;text-align:center;font-size:13pt;color:#2dd4bf;margin:0}
+.cover .bookmeta{position:absolute;top:156mm;left:16mm;width:178mm;text-align:center;font-size:8.6pt;color:#a6b6ca;margin:0}
+.cover .stats{position:absolute;top:186mm;left:0;right:0;display:flex;justify-content:center;gap:4mm;margin:0;direction:ltr}
+.cover .bottomnote{position:absolute;bottom:15mm;left:0;width:100%;text-align:center}
+.divider{display:block;padding:0}
+.divider:before{width:132mm;height:132mm;left:39mm;top:-55mm}
+.divider .pill{position:absolute;top:16mm;left:87mm;width:36mm;text-align:center;padding:1.5mm 0}
+.divider .icon{display:none}
+.divider:after{content:attr(data-icon);position:absolute;top:55mm;left:90.5mm;width:29mm;height:29mm;border:1px solid rgba(45,212,191,.75);border-radius:50%;background:rgba(8,23,44,.72);box-shadow:0 0 14mm rgba(20,184,166,.12);text-align:center;line-height:29mm;font-size:22pt;font-weight:700;color:#2dd4bf;z-index:3}
+.icon-mark{position:relative;width:14mm;height:14mm;border:1px dashed #48e2cf;border-radius:50%;}
+.icon-mark i{position:absolute;left:6.9mm;top:6.9mm;width:4.2mm;height:.45mm;background:#48e2cf;transform-origin:left center;}
+.icon-mark i:nth-child(1){transform:rotate(-90deg)}
+.icon-mark i:nth-child(2){transform:rotate(30deg)}
+.icon-mark i:nth-child(3){transform:rotate(150deg)}
+.icon-mark b{position:absolute;left:6.2mm;top:6.2mm;width:1.7mm;height:1.7mm;border-radius:50%;background:#f8fafc;border:1px solid #48e2cf}
+.divider .label{position:absolute;top:94mm;left:0;width:100%;text-align:center;margin:0}
+.divider h1{position:absolute;top:102mm;left:10mm;width:190mm;text-align:center;font-size:23pt;line-height:1.35;margin:0}
+.divider .sub{position:absolute;top:123mm;left:0;width:100%;text-align:center}
+.divider .meta{position:absolute;top:134mm;left:0;width:100%;text-align:center;margin:0}
+.divider .stats{position:absolute;top:156mm;left:0;right:0;display:flex;justify-content:center;gap:4mm;margin:0;direction:ltr}
+.divider .topics{position:absolute;top:200mm;left:0;right:auto;width:100%;text-align:center;direction:rtl;margin:0;z-index:2}
+.divider .topic-row{height:11mm;line-height:11mm;width:100%;text-align:center;white-space:nowrap;direction:rtl}
+.divider .topic{display:inline-block;vertical-align:middle;padding:1.7mm 3mm;line-height:1.4;margin:0 1.1mm}
+.divider .bottomline{bottom:15mm;left:0;width:100%;text-align:center}
+</style></head><body><section class="page cover">
+      <img class="logo" src="file:///home/user/work/render/assets/humsyar-logo.png" />
+      <div class="rule"></div>
+      <div class="category">جزوهٔ نکته‌محور امتحانی</div>
+      <h1>دانش خانواده<br>و جمعیت</h1>
+      <div class="subtitle">مرور نکات کلیدیِ پنج درس</div>
+      <div class="bookmeta">تعریف‌ها، دسته‌بندی‌ها و نکته‌های مهم برای جمع‌بندی آزمون</div>
+      <div class="stats">
+        <div class="stat"><strong>۳۰</strong><span>صفحهٔ جزوه</span></div>
+        <div class="stat"><strong>۵</strong><span>درس</span></div>
+        <div class="stat"><strong>۱۰</strong><span>کارکرد ازدواج</span></div>
+      </div>
+      <div class="bottomnote">ویژهٔ مطالعهٔ سریع پیش از آزمون — <b>HumsYar</b></div>
+    </section><section class="page contents"><h1>فهرست مباحث</h1><div class="toprule"></div><div class="toc-row"><div class="toc-num">۱</div><div><div class="toc-title">چرا ازدواج می‌کنم؟</div><div class="toc-sub">نیازها، آرامش و زمان مناسب ازدواج</div></div><div class="toc-pages">صفحهٔ ۴–۷</div></div><div class="toc-row"><div class="toc-num">۲</div><div><div class="toc-title">آسیب‌های تأخیر ازدواج</div><div class="toc-sub">موانع، پیامدها و سلامت</div></div><div class="toc-pages">صفحهٔ ۹–۱۲</div></div><div class="toc-row"><div class="toc-num">۳</div><div><div class="toc-title">کارکردهای ازدواج</div><div class="toc-sub">ده کارکرد فردی و اجتماعی</div></div><div class="toc-pages">صفحهٔ ۱۴–۱۸</div></div><div class="toc-row"><div class="toc-num">۴</div><div><div class="toc-title">سفر به ساحل آرامش</div><div class="toc-sub">فرایند ازدواج و خودشناسی</div></div><div class="toc-pages">صفحهٔ ۲۰–۲۳</div></div><div class="toc-row"><div class="toc-num">۵</div><div><div class="toc-title">معیارهای انتخاب همسر</div><div class="toc-sub">معیارهای اصلی، فرعی و تناسب</div></div><div class="toc-pages">صفحهٔ ۲۵–۲۸</div></div><div class="toc-row"><div class="toc-num">✓</div><div><div class="toc-title">مرور فوق‌سریع شب امتحان</div><div class="toc-sub">فهرست‌ها، عددها، تعریف‌ها و نکات پرتکرار</div></div><div class="toc-pages">صفحهٔ ۲۹–۳۰</div></div><div class="roadmap"><h2>نقشهٔ مباحث</h2><div class="roadline">
+    <div class="roaditem"><strong>۱ · چرا؟</strong>نیاز و آرامش</div><div class="roaditem"><strong>۲ · چه آسیب؟</strong>تأخیر</div><div class="roaditem"><strong>۳ · چه فایده؟</strong>کارکردها</div><div class="roaditem"><strong>۴ · چگونه؟</strong>آمادگی و شناخت</div><div class="roaditem"><strong>۵ · با چه معیار؟</strong>انتخاب همسر</div>
+    </div></div><div class="callout definition" style="margin-top:3mm"><b>روش مرور</b><p>ابتدا تعریف‌ها و دسته‌بندی‌ها را بخوانید؛ سپس نکته‌های عددی و پیوندهای مفهومی را مرور کنید.</p></div><p class="small-note">شماره‌های سمت راست، صفحات همین جزوه را نشان می‌دهند.</p><div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">۲</span></div></section><section class="page divider" data-icon="۱">
+      <div class="pill">درس ۱ از ۵</div>
+      <div class="icon"><div class="icon-mark"><i></i><i></i><i></i><b></b></div></div>
+      <div class="label">درس ۱</div>
+      <h1>چرا ازدواج می‌کنم؟</h1>
+      <div class="sub">آرامش، نیازها و زمان مناسب ازدواج</div>
+      <div class="meta">صفحه‌های ۴ تا ۷</div>
+      <div class="stats"><div class="stat"><strong>۵</strong><span>نیاز اساسی</span></div><div class="stat"><strong>۷</strong><span>نکتهٔ لباس</span></div><div class="stat"><strong>۵</strong><span>دورهٔ سنی</span></div></div>
+      <div class="topics"><div class="topic-row"><span class="topic">آرامش و نیازهای انسان</span><span class="topic">رابطهٔ همسر و مکمل‌بودن</span></div><div class="topic-row"><span class="topic">لباسِ یکدیگر بودن</span><span class="topic">شور عاطفی و ساختارسازی</span></div></div>
+      <div class="bottomline">HumsYar · دانش خانواده و جمعیت</div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱. ازدواج؛ پاسخی به نیاز و جست‌وجوی آرامش</h1>
+      <div class="body">
+ <p>«نیاز» ریشه و منشأ آرامش و ناآرامی است. اگر نیازهای انسان تأمین شود، آرامش خواهد داشت و اگر نیاز او رفع نشود، ناآرام خواهد بود.</p>
+ <div class="callout definition"><b>تعریفِ راهنما</b><p>ازدواج فرایندی شرعی و قانونی برای تأمین نیازهای انسان، جهت رسیدن به آرامش و مسیری برای رشد و تعالی است.</p></div>
+ <div class="callout quran"><b class="quran-title">دو آیه دربارهٔ آرامش | رعد/۲۸ و فجر/۲۷</b>
+   <p class="quran-ar" dir="rtl" lang="ar">الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ ۗ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</p>
+   <p class="quran-meaning"><b>معنیِ رعد/۲۸:</b> کسانی که ایمان آورده‌اند، دل‌هایشان با یاد خدا آرام می‌گیرد؛ آگاه باشید که دل‌ها با یاد خدا آرام می‌گیرند.</p>
+   <p class="quran-ar" dir="rtl" lang="ar">يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ</p>
+   <p class="quran-meaning"><b>معنیِ فجر/۲۷:</b> ای جانِ آرام‌یافته. در متن درس، این آیه برای اشاره به طمأنینه و آرامشِ نفس آمده است.</p>
+ </div>
+ <h2 class="section">پنج نیاز اساسی انسان</h2>
+ <table><thead><tr><th>نوع نیاز</th><th>معنا و نمونه</th></tr></thead><tbody>
+ <tr><td><b>زیستی</b></td><td>نیازهای پایهٔ جسمانی؛ مانند غذا، آب، هوا، مسکن و پوشاک.</td></tr>
+ <tr><td><b>امنیتی</b></td><td>امنیت جانی، اقتصادی، اجتماعی و شغلی.</td></tr>
+ <tr><td><b>ارتباطی</b></td><td>پیوند با خانواده، دوستان، همسایگان و همکاران؛ انسان موجودی ارتباط‌جوست.</td></tr>
+ <tr><td><b>شخصیتی</b></td><td>عزت، احترام و استقلال؛ انسان نمی‌خواهد تحقیر یا زیر سلطهٔ دیگری باشد.</td></tr>
+ <tr><td><b>متعالی</b></td><td>رشد، کمال و تقرب به خدا؛ فراتررفتن از نیازهای صرفاً مادی.</td></tr>
+ </tbody></table>
+ <h2 class="section">چرا رابطهٔ همسر برجسته است؟</h2>
+ <ul><li>روابط انسان با افراد مختلف <b>مستقل</b> از یکدیگرند؛ رابطهٔ خوب با یک نفر، الزاماً کمبود رابطه‌ای دیگر را جبران نمی‌کند.</li>
+ <li>رابطهٔ زن و شوهر از عمیق‌ترین و اثرگذارترین پیوندهاست؛ اختلاف در این پیوند می‌تواند تنیدگی و آشفتگی ایجاد کند.</li>
+ <li>برخلاف بسیاری از ارتباط‌های دیگر، افراد زیادی زندگی خود را به «پیش از ازدواج» و «پس از ازدواج» تقسیم می‌کنند.</li></ul>
+ <div class="callout example"><b>مثال:</b><p>اگر کسی با مادرش رابطهٔ خوبی داشته باشد اما با پدرش اختلاف پیدا کند، رابطهٔ خوب با مادر مشکل ارتباطی با پدر را از میان نمی‌برد؛ هر رابطه به‌طور مستقل بر آرامش او اثر می‌گذارد.</p></div>
+ <div class="callout exam"><b>نکتهٔ امتحانی</b><p>پاسخ به نیازها مسیر آرامش است؛ ازدواج می‌تواند هم‌زمان چند نیاز انسان را پوشش دهد.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">4</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۲. زوج، مکمل و «لباسِ» یکدیگر</h1>
+      <div class="body">
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | روم/۲۱</b>
+   <p class="quran-ar" dir="rtl" lang="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ</p>
+   <p class="quran-meaning"><b>معنی:</b> از نشانه‌های او این است که همسرانی از جنس خودتان برای شما آفرید تا در کنارشان آرامش یابید و میان شما دوستی و مهربانی قرار داد؛ در این امر نشانه‌هایی برای اندیشمندان است.</p>
+   <p class="quran-note"><b>پیوند با مبحث:</b> آیه، آرامش، مودّت و رحمت را در پیوند همسران کنار هم می‌آورد؛ متن درس از آن برای توضیح مکمل‌بودن زن و مرد بهره می‌گیرد.</p>
+ </div>
+ <div class="callout example"><b>مثال:</b><p>یک لیوان آب و یک حبه قند را تصور کنید: با حل‌شدن قند، آب‌قند با ویژگی تازه‌ای پدید می‌آید. زن و شوهر نیز پس از ازدواج، شخصیتی متفاوت از پیش و زندگی مشترکی با مسئولیت‌های تازه پیدا می‌کنند.</p></div>
+ <h2 class="section">هفت نکته از تشبیه «لباس»</h2>
+ <div class="callout quran"><b class="quran-title">بخشِ مورد استناد | بقره/۱۸۷</b>
+   <p class="quran-ar" dir="rtl" lang="ar">هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ</p>
+   <p class="quran-meaning"><b>معنی:</b> آنان برای شما پوشش‌اند و شما برای آنان پوششید.</p>
+   <p class="quran-note">این همان بخش کوتاهی است که در متن منبع به آن استناد شده است؛ هفت نکتهٔ جدولِ بعد از آن، شرح تشبیه همسر به لباس است.</p>
+ </div>
+ <table><thead><tr><th>لباس چه می‌کند؟</th><th>کارکرد آن در رابطهٔ همسران</th></tr></thead><tbody>
+ <tr><td>متناسب انتخاب می‌شود</td><td>همسر باید با شخصیت و فکر فرد تناسب داشته باشد.</td></tr>
+ <tr><td>زینت می‌بخشد</td><td>همسر و فرزند مایهٔ زینت و آرامش خانواده‌اند.</td></tr>
+ <tr><td>عیب را می‌پوشاند</td><td>زن و مرد عیب‌ها و کاستی‌های یکدیگر را بپوشانند.</td></tr>
+ <tr><td>از آسیب محافظت می‌کند</td><td>همسر به حفظ کانون خانواده از آسیب‌ها کمک می‌کند.</td></tr>
+ <tr><td>حریم و پوشش است</td><td>پیوند پایدار، حریم می‌سازد و از رسوایی و انحراف دور می‌کند.</td></tr>
+ <tr><td>با شرایط سازگار می‌شود</td><td>رفتار باید با نیاز روحی طرف مقابل تنظیم شود؛ مثل مدارا هنگام خستگی یا خشم.</td></tr>
+ <tr><td>از آلودگی دور می‌ماند</td><td>همسران یکدیگر را در برابر لغزش و گناه یاری می‌کنند.</td></tr>
+ </tbody></table>
+ <div class="callout remember"><b>حفظ کن</b><p>تناسب، زینت، پوشاندن عیب، حفاظت، حریم، سازگاری با نیاز و پیشگیری از گناه: هفت وجهِ تشبیه همسر به لباس.</p></div>
+
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">5</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۳. احترام، تعالی و رشد در بستر ازدواج</h1>
+      <div class="body">
+ <h2 class="section">نیاز شخصیتی؛ عزت و استقلال</h2>
+ <p><b>نیاز شخصیتی:</b> عزت، احترام و استقلال. انسان از تحقیر و سلطه‌پذیری ناخشنود است.</p>
+ <h2 class="section">نیاز متعالی؛ تقرب و بازتاب صفات نیک</h2>
+ <div class="callout definition"><b>تقرب به خدا</b><p>تقرب، نزدیک‌شدن مکانی نیست؛ بازتاب‌دادن صفات نیک الهی در رفتار انسان است.</p></div>
+ <p>نمونه‌هایی از بروز صفات نیک در زندگی خانوادگی:</p>
+ <table><thead><tr><th>صفت</th><th>نمونهٔ خانوادگی</th></tr></thead><tbody>
+ <tr><td><b>رزّاق</b></td><td>تلاش برای تأمین نیازهای همسر و فرزند.</td></tr>
+ <tr><td><b>انیس</b></td><td>همراهی و اُنس‌بخشیدن به همسر.</td></tr>
+ <tr><td><b>طبیب</b></td><td>مراقبت و رسیدگی هنگام بیماری.</td></tr>
+ <tr><td><b>ستّار</b></td><td>رازداری و حفظ آبروی همسر.</td></tr>
+ <tr><td><b>توّاب</b></td><td>پذیرش بازگشت و پیش‌قدم‌شدن برای آشتی پس از خطا.</td></tr>
+ </tbody></table>
+ <p>خدمت به همسر، از نگاه مهربانانه تا کارهای خانه، می‌تواند عبادت باشد. توبه با توفیق بازگشت و پذیرش آن همراه است.</p>
+ <div class="callout summary"><b>جمع‌بندی</b><p>ازدواج می‌تواند نیازهای زیستی، امنیتی، ارتباطی، شخصیتی و متعالی را در یک رابطهٔ متعهدانه به هم پیوند دهد؛ نتیجهٔ مطلوب، آرامش و رشد است.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">6</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۴. زمان مناسب؛ شور عاطفی و ساختارسازی</h1>
+      <div class="body">
+ <p>رفتار متقابل دختر و پسر در دوره‌های سنی مختلف:</p>
+ <table><thead><tr><th>دوره</th><th>بازهٔ سنی</th><th>ویژگی</th></tr></thead><tbody>
+ <tr><td>خردسالی</td><td>تولد تا ۳ سالگی</td><td>بدون درک جنسیتی</td></tr>
+ <tr><td>کودکی</td><td>۳ تا ۱۲ سالگی</td><td>گریز از بازی با جنس دیگر</td></tr>
+ <tr><td>نوجوانی</td><td>۱۲ تا ۱۶ سالگی</td><td>کشش یا کنجکاوی</td></tr>
+ <tr><td>ابتدای جوانی</td><td>۱۹ تا ۲۶ سالگی</td><td><b>شور عاطفی</b></td></tr>
+ <tr><td>ادامهٔ جوانی</td><td>پس از ۲۷ سالگی</td><td><b>ساختارسازی</b></td></tr>
+ </tbody></table>
+ <div class="callout definition"><b>دو اصطلاح کلیدی</b><p><b>شور عاطفی:</b> دوره‌ای که توجه و انگیزه‌های فرد به رابطه و جنس مکمل پررنگ است. <b>ساختارسازی:</b> دوره‌ای که تمرکز بیشتری بر کار، درآمد، مسکن و سامان‌دادن امکانات زندگی قرار می‌گیرد.</p></div>
+ <ul><li>دختران به‌طور میانگین حدود دو سال زودتر از پسران وارد دورهٔ نوجوانی می‌شوند؛ در این تقسیم‌بندی، آغاز نوجوانی برای پسران ۱۲ یا ۱۳ و برای دختران ۹ یا ۱۰ سالگی ذکر شده است.</li>
+ <li>سن بلوغ قمری در نظر مشهور فقه امامیه: دختر ۹ سال تمام و پسر ۱۵ سال تمام. سن بلوغ با سن مناسب ازدواج یکی نیست.</li>
+ <li>تأخیر ازدواج پس از دورهٔ شور عاطفی می‌تواند تمرکز را از تأمین عاطفی به کار و مدیریت اقتصادی زندگی منتقل کند.</li></ul>
+ <div class="callout example"><b>مثال:</b><p>کسی که شغل، خودرو، خانه و پس‌اندازش از پیش شکل گرفته، مانند صاحب جورچینی است که قطعه‌ای از میانه‌اش گم شده؛ قطعهٔ جایگزین باید با نقش و لبه‌های اطراف جور باشد و یافتنش دشوار است. آجرِ افتاده از میانهٔ دیوار نیز به‌آسانی جایگزینِ مستحکمی نمی‌شود؛ اما جورچین یا دیوار را از آغاز می‌توان کنار هم چید. مثال، پیوستن به ساختار آماده را با ساختن زندگی از ابتدا مقایسه می‌کند.</p></div>
+ <div class="callout exam"><b>نکتهٔ امتحانی</b><p>سن ثابت و واحدی برای ازدواج تعیین نشده است؛ تأکید بر ازدواجِ بهنگام از زمان احساس نیاز و پرهیز از فاصلهٔ زیادِ بلوغ جنسی تا ازدواج است. در روایت، ازدواج مایهٔ حفظ نیمی از دین دانسته شده است (الکافی، ج۵، ص۳۲۸).</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">7</span></div>
+    </section><section class="page divider" data-icon="۲">
+      <div class="pill">درس ۲ از ۵</div>
+      <div class="icon"><div class="icon-mark"><i></i><i></i><i></i><b></b></div></div>
+      <div class="label">درس ۲</div>
+      <h1>آسیب‌های تأخیر ازدواج</h1>
+      <div class="sub">دو مانع اصلی و پیامدهای تأخیر</div>
+      <div class="meta">صفحه‌های ۹ تا ۱۲</div>
+      <div class="stats"><div class="stat"><strong>۲</strong><span>عامل تأخیر</span></div><div class="stat"><strong>۴</strong><span>محور آسیب</span></div><div class="stat"><strong>۳</strong><span>محورِ باروری</span></div></div>
+      <div class="topics"><div class="topic-row"><span class="topic">استقلال مالی و نگاه واقع‌بینانه</span><span class="topic">آموزش مهارت‌های زندگی</span></div><div class="topic-row"><span class="topic">افت شور عاطفی و روابط جایگزین</span><span class="topic">سلامت، باروری و پیامدهای اجتماعی</span></div></div>
+      <div class="bottomline">HumsYar · دانش خانواده و جمعیت</div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۵. چرا ازدواج به تأخیر می‌افتد؟</h1>
+      <div class="body">
+ <p>دو مانع اصلی ازدواج: نداشتن استقلال مالی و نداشتن مهارت. عوامل دیگر: تحصیلات تکمیلی، سربازی، زمینه‌های فرهنگی و بیماری.</p>
+ <h2 class="section">عامل اول — نداشتن استقلال مالی</h2>
+ <p>نداشتن استقلال مالی از موانع مهم ازدواج است. تشکیل خانواده به وضعیت مالی متفاوتی نسبت به دوران مجردی نیاز دارد؛ بااین‌حال، انگیزه و مسئولیت‌پذیریِ تأمین نیازهای مادی می‌تواند در مسیر زندگی مشترک تقویت شود.</p>
+ <div class="callout example"><b>مثال:</b><p>دانشجویی به استاد می‌گوید به‌خاطر نداشتن پول ازدواج نمی‌کند؛ استاد وضع او را به چتربازی مانند می‌کند که می‌خواهد چترش پیش از پریدن، داخل هواپیما باز شود. چترباز اول می‌پرد و چتر پس از آن باز می‌شود. مقصود، منتظرنماندن برای فراهم‌شدنِ تک‌تک امکانات است؛ نه نادیده‌گرفتن هزینه‌ها و مسئولیت مالی زندگی مشترک.</p></div>
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | نور/۳۲</b>
+   <p class="quran-ar" dir="rtl" lang="ar">وَأَنْكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ</p>
+   <p class="quran-meaning"><b>معنی:</b> بی‌همسرانِ شایسته از میان خود و نیز غلامان و کنیزان شایسته را همسر دهید؛ اگر تنگ‌دست باشند، خدا از فضل خود بی‌نیازشان می‌کند؛ خدا گشایشگر و داناست.</p>
+   <p class="quran-note"><b>برداشتِ این درس:</b> آیه به فراهم‌کردن زمینهٔ ازدواج و امید به فضل الهی پیوند خورده است. توضیح منبع، وعده را ناظر به اقدام به ازدواج می‌داند، نه هر فرد فقیری.</p>
+ </div>
+ 
+ <h2 class="section">عامل دوم — نداشتن مهارت</h2>
+ <p>مهارت‌های زندگی با آموزش و تمرین به‌دست می‌آیند. کمبود تجربهٔ عملی به معنای ناتوانی ذاتی نیست؛ آمادگی، مهارت ارتباطی، حل تعارض، مدیریت خانه و مسئولیت‌پذیری مالی قابل یادگیری‌اند.</p>
+ <ul><li>کمبود مهارت را با ناتوانی ذاتی یکی ندانید؛ جوانان می‌توانند در مسیر، سریع یاد بگیرند.</li>
+ <li>مهارت‌هایی مانند گفت‌وگو، حل تعارض، مدیریت خانه و مسئولیت مالی با آموزش و تمرین رشد می‌کنند.</li>
+ </ul>
+ <div class="callout summary"><b>جمع‌بندی</b><p>تصمیم را صفر و صدی نسنجید: مزایا و آسیب‌ها را مقایسه کنید. به‌جای انتظار برای «شرایط بی‌نقص»، میزان آمادگی و توانِ یادگیری مهارت‌ها را بسنجید؛ ازدواج بهنگام هم بی‌عیب و تضمین‌کنندهٔ موفقیت نیست.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">9</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">پیامدِ تأخیر؛ افت شور عاطفی</h1>
+      <div class="body">
+ <h2 class="section">افت شور عاطفی</h2>
+ <p>پیوند زن و شوهر با عقد و قانون شکل می‌گیرد و با عشق، علاقه و مودّت استحکام می‌یابد. ناهم‌زمانیِ شور عاطفی و ساختارسازی می‌تواند نیاز عاطفی را با تمرکز بر کار و امور اقتصادی روبه‌رو کند.</p>
+ 
+ <p><b>نکته:</b> افت عاطفه ممکن است در گذر زمان رخ دهد؛ در این بحث، ازدواج در دورهٔ شور عاطفی پیش از آن پایهٔ عاطفی و خاطره‌های مشترک می‌سازد. این به معنای نبودِ اختلاف یا تضمینِ موفقیت نیست.</p>
+ <div class="callout example"><b>مثال:</b><p>نوعروسی ۲۲ساله شام را با گل و شمع آماده کرده و منتظر همسر ۳۲ساله‌اش است؛ او به‌دلیل هزینه‌ها و قسط‌ها شیفت دوم مانده است. مثال نشان می‌دهد یکی ممکن است محبت و توجه بخواهد و دیگری، با تمرکز بر تأمین اقتصادی، نیاز عاطفی او را نبیند.</p></div>
+ <div class="callout exam"><b>نکتهٔ امتحانی</b><p>به تأخیر انداختن ازدواج برای رسیدن به «شرایط اقتصادی کامل» ممکن است نیاز عاطفی را نادیده بگیرد؛ در عین حال، این بحث به‌معنای تضمینِ موفقیت ازدواج بهنگام نیست.</p></div>
+ <h2 class="section">چهار آسیبِ اصلیِ بررسی‌شده</h2>
+ <div class="steps four"><div><b>۱ · عاطفی</b><span>ناهم‌زمانیِ شور عاطفی و ساختارسازی</span></div><div><b>۲ · رابطه</b><span>جایگزین‌شدن دوستیِ بی‌تعهد</span></div><div><b>۳ · باروری</b><span>سن و سبک زندگی</span></div><div><b>۴ · جسمی/اجتماعی</b><span>سلامت و پیامدهای اجتماعی</span></div></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">10</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">پیامدِ تأخیر؛ دامِ روابط جایگزین</h1>
+      <div class="body">
+ <h2 class="section">افتادن در دام رابطهٔ دختر و پسری</h2>
+ <p>برخی رابطهٔ دوستی را با عنوان «شناخت برای ازدواج» آغاز می‌کنند؛ اما این رابطه در بسیاری از موارد به ازدواج نمی‌انجامد و جایگزین اقدام روشن و متعهدانه می‌شود.</p>
+ <ul><li>در بیان مطرح‌شده در این مبحث، پسران معمولاً ابتدا جنبهٔ جنسی و دختران ابتدا جنبهٔ عاطفیِ رابطه را برجسته می‌بینند.</li>
+ <li>ممکن است یکی از طرفین خواستگاری را عقب بیندازد، درحالی‌که دیگری رابطه را مقدمهٔ قطعی ازدواج بداند.</li>
+ <li>پیامدهای روابط جایگزین: اضطراب و افسردگی، بدبینی و شک، دلخوری پس از سردشدن رابطه و اثرپذیری رابطهٔ آینده از تجربهٔ پیشین.</li>
+ <li>خاطرهٔ رابطه می‌تواند «تصویر خیالیِ فرد قبلی» را بسازد و مقایسهٔ ناعادلانه‌ای با همسر آینده ایجاد کند.</li></ul>
+ <div class="callout question"><b>سؤال مهم</b><p>آیا آشناییِ طولانی، به‌تنهایی شناخت کامل و تعهد می‌آورد؟ <b>خیر.</b> شناخت به گفت‌وگوی هدفمند، بررسی تناسب، مشورت و تصمیم روشن نیاز دارد.</p></div>
+ <div class="callout exam"><b>نکتهٔ امتحانی</b><p>«برای شناخت» کافی نیست؛ رابطهٔ دوستیِ طولانی به‌تنهایی ازدواج یا شناخت کامل را تضمین نمی‌کند.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">11</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">باروری، سلامت و پیامدهای اجتماعیِ تأخیر</h1>
+      <div class="body">
+ <h2 class="section">باروری و ناباروری</h2>
+ <p>عوامل مرتبط با باروری: سن ازدواج، سن تصمیم برای بارداری و سبک زندگی؛ از جمله چاقی، کم‌تحرکی، الگوی خواب و رژیم غذایی. بر پایهٔ پیمایش ملی سال ۱۳۹۸: ناباروری در <b>۲۰٫۳٪</b> زوج‌های ایرانی؛ حدود <b>۳٬۲۶۰٬۰۰۰</b> زوج نابارور و پیش‌بینیِ افزایش سالانهٔ حدود <b>۸۸٬۰۰۰ زوج</b>.</p>
+ <div class="callout definition"><b>نمونهٔ عددیِ فاصله</b><p>در مثالِ مقایسه‌ای این مبحث: دختر، بلوغ در ۱۲سالگی و میانگین ازدواج ۲۳سالگی؛ پسر، بلوغ در ۱۵سالگی و میانگین ازدواج ۲۷سالگی. این اعداد را با سن بلوغ شرعی قمری (دختر ۹، پسر ۱۵) یکی نگیرید.</p></div>
+ <h2 class="section">آسیب‌های جسمانی و اجتماعی</h2>
+ <ul><li>تغذیهٔ نامناسب و کم‌تحرکی می‌تواند با چاقی، پوکی استخوان و بیماری‌های جسمی همراه باشد.</li>
+ <li>وابستگی به محتوای غیراخلاقی با افسردگی و افت کیفیت زندگی پیوند داده شده است.</li>
+ <li>فاصلهٔ طولانی بلوغ تا ازدواج و روابط خارج از چارچوب خانواده با خطر بیماری‌های آمیزشی، بارداری ناخواسته، سقط جنین و فرزندآوری خارج از چارچوب خانواده همراه است.</li>
+ <li>پیامدهای اجتماعی: بی‌تعهدی، اعتیاد، فساد، کاهش جمعیت، شکاف نسلی، بدبینی اجتماعی و هدررفت منابع.</li></ul>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">12</span></div>
+    </section><section class="page divider" data-icon="۳">
+      <div class="pill">درس ۳ از ۵</div>
+      <div class="icon"><div class="icon-mark"><i></i><i></i><i></i><b></b></div></div>
+      <div class="label">درس ۳</div>
+      <h1>کارکردهای ازدواج</h1>
+      <div class="sub">ده کارکرد فردی، خانوادگی و اجتماعی</div>
+      <div class="meta">صفحه‌های ۱۴ تا ۱۸</div>
+      <div class="stats"><div class="stat"><strong>۱۰</strong><span>کارکرد</span></div><div class="stat"><strong>۲</strong><span>نوع رشد</span></div><div class="stat"><strong>۲۱</strong><span>آیهٔ محوری روم</span></div></div>
+      <div class="topics"><div class="topic-row"><span class="topic">عاطفه و رابطهٔ سالم</span><span class="topic">امنیت و مسئولیت اقتصادی</span></div><div class="topic-row"><span class="topic">نسل، معنویت و سلامت</span><span class="topic">رشد عاطفی و عقلانی</span></div></div>
+      <div class="bottomline">HumsYar · دانش خانواده و جمعیت</div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۸. ده کارکرد ازدواج؛ نقشهٔ کلی</h1>
+      <div class="body">
+ <p>ازدواج کارکردهای فردی، عاطفی، اقتصادی، معنوی و اجتماعی دارد.</p>
+ <table class="functions"><thead><tr><th>شماره</th><th>کارکرد</th><th>کلیدواژهٔ مرور</th></tr></thead><tbody>
+ <tr><td>۱</td><td>تأمین عاطفی</td><td>اُنس، مودّت، آرامش</td></tr>
+ <tr><td>۲</td><td>تأمین جنسی</td><td>پاسخ مسئولانه و امن به غریزه</td></tr>
+ <tr><td>۳</td><td>استقلال و مدیریت</td><td>تشکیل خانه و تجربهٔ مسئولیت</td></tr>
+ <tr><td>۴</td><td>دوری از دوستی‌های بی‌حاصل و افراطی</td><td>ثبات و سرمایه‌گذاری عاطفی</td></tr>
+ <tr><td>۵</td><td>امنیت اقتصادی</td><td>همکاری و انگیزهٔ تأمین</td></tr>
+ <tr><td>۶</td><td>جاودانگی و تولید نسل</td><td>فرزند و تداوم نسل</td></tr>
+ <tr><td>۷</td><td>سلامت معنوی</td><td>خروج از خودمحوری</td></tr>
+ <tr><td>۸</td><td>سلامت جسمانی</td><td>سبک زندگی و مراقبت</td></tr>
+ <tr><td>۹</td><td>رشد عاطفی و عقلانی</td><td>تنظیم هیجان و تصمیم‌گیری</td></tr>
+ <tr><td>۱۰</td><td>انجام حکم خدا و کسب ثواب</td><td>ارزش دینی و عبادی</td></tr>
+ </tbody></table>
+ <div class="callout remember"><b>مرور</b><p>ده کارکرد را با ترتیب و کلیدواژه‌های جدول به‌خاطر بسپارید.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">14</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۹. کارکردهای ۱ و ۲؛ عاطفه و پاسخ جنسی</h1>
+      <div class="body">
+ <h2 class="section">۱) تأمین عاطفی</h2>
+ <p>آیهٔ <b>روم/۲۱</b> (متن و معنی در کادر ص۵) از سکون، مودّت و رحمت میان همسران سخن می‌گوید. اُنس، توجه، رازگویی و غمخواری نیازهای عاطفی را تأمین می‌کنند و با سلامت روان، امید به زندگی و توان مقابله با فشارهای روزمره پیوند دارند.</p>
+ <div class="callout question"><b>نکتهٔ مفهومی</b><p>آرامش و رضایت، محصولِ ازدواج موفق و کیفیت ارتباط است؛ ازدواج مسئولیت‌های تازه نیز ایجاد می‌کند.</p></div>
+ <div class="callout example"><b>مثال:</b><p>نیما از خرید خودرو خوشحال بود، اما صبح ماشین روشن نشد؛ رادیاتور ضدیخ نداشت و آب یخ زده بود. سهیلا که همیشه نزد دوستش آب‌سیب می‌خورد، آبمیوه‌گیری خرید تا جبران کند؛ اما آب‌گرفتن و شستن دستگاه پرزحمت بود. این دو ماجرا نشان می‌دهند ازدواج به‌تنهایی آرامش و خوشبختی را تضمین نمی‌کند؛ کیفیت رابطه و رسیدگیِ پس از آن مهم است.</p></div>
+ <h2 class="section">۲) تأمین جنسی</h2>
+ <p>غریزهٔ جنسی نیرویی است که در زن و مرد قرار داده شده است و ازدواج وسیله‌ای مجاز برای بهره‌برداری صحیح از این نیرو و پاسخی به این غریزه است.</p>
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | مؤمنون/۵–۶</b>
+   <p class="quran-ar" dir="rtl" lang="ar">وَالَّذِينَ هُمْ لِفُرُوجِهِمْ حَافِظُونَ ۝ إِلَّا عَلَىٰ أَزْوَاجِهِمْ أَوْ مَا مَلَكَتْ أَيْمَانُهُمْ فَإِنَّهُمْ غَيْرُ مَلُومِينَ</p>
+   <p class="quran-meaning"><b>معنی:</b> و آنان که پاکدامنی خود را حفظ می‌کنند؛ مگر در برابر همسرانشان یا آنچه در تملک آنان است، که در این موارد نکوهیده نیستند.</p>
+   <p class="quran-note"><b>پیوند با مبحث:</b> این آیات در متن درس برای توضیح پاسخ‌گویی به غریزه در چارچوب رابطهٔ مجاز نقل شده‌اند.</p>
+ </div>
+ <div class="callout example"><b>مثال:</b><p>غریزه به آب رودخانه تشبیه شده است: سد و دریچه، جریان را مهار و در زمان نیاز هدایت می‌کنند تا به‌جای سیلاب، مایهٔ حیات باشد. مثال بر کنترل و بهره‌گیریِ مسئولانه از این نیرو در چارچوب ازدواج تأکید دارد.</p></div>
+ <ul><li>تعهد جنسی در چارچوب خانواده، آسیب‌پذیری در برابر بیماری‌های آمیزشی مانند سوزاک، کلامیدیا، ایدز و هپاتیت را کاهش می‌دهد.</li>
+ <li>رابطهٔ سالم می‌تواند با بهبود خلق‌وخو، افزایش اعتمادبه‌نفس و ارتقای برخی شاخص‌های جسمی همراه باشد.</li></ul>
+ <div class="callout exam"><b>پیوند مفهومی</b><p>کارکرد عاطفی و جنسی در بستر امنیت، مودّت و مسئولیت‌پذیری تحقق می‌یابند.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">15</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۰. کارکردهای ۳ تا ۵؛ استقلال، پیوند و اقتصاد</h1>
+      <div class="body">
+ <h2 class="section">۳) استقلال و مدیریت</h2>
+ <p>در خانوادهٔ تازه، زوجین چارچوب و قواعد زندگی خود را می‌سازند و استقلال و مدیریت را تمرین می‌کنند؛ از جمله در کارهای خانه و فرزندپروری یا امور بیرون از خانه.</p>
+ <h2 class="section">۴) دوری از دوستی‌های بی‌حاصل و افراطی</h2>
+ <p>روابط عاطفیِ ناپایدار، ثبات و تعهدِ زندگی مشترک را فراهم نمی‌کنند؛ آشنایی به‌تنهایی تضمین‌کنندهٔ ازدواج نیست.</p>
+ <div class="callout example"><b>مثال:</b><p>احساسات را مانند سرمایه مدیریت کنید: به‌جای خرج‌کردن پراکنده، آن‌ها را برای پیوند پایدار نگه دارید؛ مانند کسی که ولخرجی نمی‌کند تا خانه بخرد و از اجاره‌نشینی رها شود. مثال بر ثبات و تعهد عاطفی در زندگی مشترک تأکید دارد.</p></div>
+ <h2 class="section">۵) امنیت اقتصادی</h2>
+ <p>ازدواج، مشارکت در تلاش و هزینه‌های زندگی است. <b>نور/۳۲</b> (متن و معنی در کادر ص۹) جامعه را به فراهم‌کردن زمینهٔ ازدواج برای بی‌همسران فرامی‌خواند. مسئولیت خانوادگی، انگیزهٔ کار و تأمین را افزایش می‌دهد؛ حمایت همسر و کار خانگی نیز در اقتصاد خانواده نقش دارند.</p>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">16</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۱. کارکردهای ۶ تا ۸؛ نسل، معنویت و سلامت</h1>
+      <div class="body">
+ <h2 class="section">۶) پاسخ به نیاز جاودانگی و تولید نسل</h2>
+ <p>میل به ماندگاری و داشتن فرزند، از گرایش‌های طبیعی انسان است. ازدواج زمینهٔ تداوم نسل و حفظ اصل‌ونسب را فراهم می‌کند. در <b>کهف/۴۶</b>، فرزندان از زینت‌های زندگی دنیا شمرده شده‌اند:</p>
+ <div class="callout quran"><b class="quran-title">بخشِ مورد استناد | کهف/۴۶</b>
+   <p class="quran-ar" dir="rtl" lang="ar">الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا</p>
+   <p class="quran-meaning"><b>معنیِ این بخش:</b> مال و فرزندان، زینت زندگی دنیاست.</p>
+   <p class="quran-note">این عبارت، همان بخش کوتاهی است که متن منبع برای اشاره به فرزند و میل به تداوم نسل نقل می‌کند؛ نه همهٔ آیه.</p>
+ </div>
+ <h2 class="section">۷) سلامت معنوی</h2>
+ <p>سلامت معنوی احساسی درونی و رضایت‌بخش است که با ارتباط سازنده با خود، دیگران و وجود متعالی، و معنا یافتن زندگی پیوند دارد. ازدواج، مسئولیت فرد را از خود به همسر و فرزند گسترش می‌دهد.</p>
+ <h2 class="section">۸) سلامت جسمانی</h2>
+ <p>مراقبت متقابل، غربالگری و تغذیهٔ مناسب از عوامل مرتبط با سلامت جسمانی‌اند. در آمارهای نقل‌شده، مصرف مواد مخدر، الکل و دخانیات در مجردان ــ بسته به نوع ماده ــ ۳ تا ۵ برابر متأهلان گزارش شده؛ در مطالعات آمریکاییِ نقل‌شده، اقدام به ترک کوکائین در متأهلان سه برابر بوده است.</p>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">17</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۲. کارکردهای ۹ و ۱۰؛ رشد و ارزش دینی</h1>
+      <div class="body">
+ <h2 class="section">۹) رشد عاطفی و عقلانی</h2>
+ <table><thead><tr><th>رشد</th><th>تعریف</th></tr></thead><tbody>
+ <tr><td><b>عاطفی</b></td><td>توانایی تنظیم و کنترل هیجان‌هایی مانند گریه، ترس، خشم، حسادت، محبت و شادی.</td></tr>
+ <tr><td><b>عقلانی</b></td><td>ادراک، فهم، مفهوم‌سازی، تفکر، پیش‌بینی، استنتاج، هدف‌گذاری، انتخاب وسیله و حل مسئله.</td></tr>
+ </tbody></table>
+ <p>زندگی مشترک می‌تواند به پختگی در تصمیم‌گیری، مواجهه با هیجان‌ها و تقویت احساس زن یا مرد بودن کمک کند.</p>
+ <h2 class="section">۱۰) انجام حکم خدا و کسب ثواب</h2>
+ <p>ازدواج پیوندی مقدس و زمینه‌ساز مودّت و رحمت است. <b>نور/۳۲</b> (کادر ص۹) به تشویق و فراهم‌کردن زمینهٔ ازدواج فرمان می‌دهد؛ تجردِ همیشگی نیز فضیلت برتر دینی شمرده نشده است.</p>
+ <div class="callout hadith"><b>روایت</b><p>از امام صادق(ع): «دو رکعت نمازی که فرد متأهل می‌خواند، از هفتاد رکعت نمازِ فرد مجرد برتر است» (الکافی، ج۵، ص۳۲۸).</p></div>
+ <div class="callout summary"><b>جمع‌بندی ده‌گانه</b><p>عاطفه، پاسخ جنسی، استقلال، پیوند پایدار، اقتصاد، نسل، معنویت، جسم، رشد عاطفی/عقلانی و ثواب: ده کارکرد اصلی ازدواج.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">18</span></div>
+    </section><section class="page divider" data-icon="۴">
+      <div class="pill">درس ۴ از ۵</div>
+      <div class="icon"><div class="icon-mark"><i></i><i></i><i></i><b></b></div></div>
+      <div class="label">درس ۴</div>
+      <h1>سفر به ساحل آرامش</h1>
+      <div class="sub">نقشهٔ راهِ فرایند ازدواج و خودشناسی</div>
+      <div class="meta">صفحه‌های ۲۰ تا ۲۳</div>
+      <div class="stats"><div class="stat"><strong>۳</strong><span>پرسش خودشناسی</span></div><div class="stat"><strong>۷</strong><span>معیار شناخت</span></div><div class="stat"><strong>۴</strong><span>عامل شکست</span></div></div>
+      <div class="topics"><div class="topic-row"><span class="topic">شناخت پیش از ازدواج</span><span class="topic">مدیریت هیجان و اثر هاله‌ای</span></div><div class="topic-row"><span class="topic">خودشناسیِ مداوم</span><span class="topic">پرسش، مشاوره و تحقیق</span></div></div>
+      <div class="bottomline">HumsYar · دانش خانواده و جمعیت</div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۳. پیش از ازدواج؛ شناخت و تصمیم آگاهانه</h1>
+      <div class="body">
+ <p>پیش از ازدواج سه پرسش را پاسخ دهید: ازدواج بدون شناخت چه آسیب‌هایی دارد؟ خود و طرف مقابل را چگونه می‌توان شناخت؟ آمادگی برای ازدواج با چه معیارهایی سنجیده می‌شود؟</p>
+ <h2 class="section">«ازدواج سفر به سرزمین ناشناخته است؟»</h2>
+ <p>آینده را نمی‌توان به‌طور کامل پیش‌بینی کرد؛ شناخت و مهارت، احتمال انتخاب و زندگی موفق را افزایش می‌دهند.</p>
+ <h2 class="section">خطاهای رایج در شناخت</h2>
+ <ul><li><b>تصمیم صرفاً احساسی:</b> حس اولیه یا جذابیت ظاهری جای بررسی را بگیرد.</li>
+ <li><b>اثر هاله‌ای:</b> یک ویژگیِ چشمگیر باعث شود فرد، بی‌دلیل سایر ویژگی‌های طرف مقابل را هم مثبت فرض کند.</li>
+ <li><b>«همین که از هم خوشمان بیاید کافی است»:</b> علاقه مهم است، اما بدون شناختِ باورها، سلامت جسمی و روانی، خانواده و مهارت‌های ارتباطی کافی نیست.</li>
+ <li><b>شناخت ناکافی:</b> چند پرسش یا چند جلسه، همهٔ واقعیت زندگی و گذشتهٔ فرد را آشکار نمی‌کند؛ گاهی در دورهٔ آشنایی «ویترین» نمایش داده می‌شود.</li>
+ <li><b>سخت‌گیری افراطی و کمال‌گرایی:</b> شرط‌های بی‌پایه و فهرست‌های صدتایی نیز مانع تصمیم سنجیده‌اند.</li></ul>
+ <div class="callout example"><b>مثال:</b><p>فردی که پیش‌تر تصمیم جدی برای ازدواج نداشته، با دیدار نخست و جذابیت ظاهری طرف مقابل جذب می‌شود و پیش از شناخت سایر ویژگی‌ها می‌گوید: «همان جلسهٔ اول فهمیدم او همان کسی است که می‌خواستم». تعمیم حس اولیه به کل شخصیت، اثر هاله‌ای است.</p></div>
+ <div class="callout definition"><b>اصلِ خودشناسی</b><p>«بهترین همسر» لزوماً بهترین فرد برای همه نیست؛ مناسب‌ترین همسر برای هر شخص، فردی است که بیشترین تناسب را با ویژگی‌ها و ارزش‌های او دارد.</p></div>
+ <div class="callout exam"><b>سه روش شناخت</b><p>پرسش‌های کلیدی؛ آزمون و مشاورهٔ پیش از ازدواج با مشاور امین؛ تحقیق میدانی دربارهٔ گزینه و خانواده.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">20</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۴. خودشناسی؛ دغدغه‌ها، ارزش‌ها و آمادگی</h1>
+      <div class="body">
+ <h2 class="section">خودشناسی از کجا شروع می‌شود؟</h2>
+ <p>خودشناسی: شناخت ویژگی‌ها، دغدغه‌ها، ارزش‌ها و هدف‌هایی که بیشترین سهم را در زندگی دارند. برای شروع، ۳ تا ۵ دغدغهٔ اصلی را بنویسید و اولویت‌بندی کنید.</p>
+ <h2 class="section">چرا خودشناسی لازم است؟</h2>
+ <p>خودشناسی، شناخت ظرفیت‌ها و محدودیت‌های فرد را ممکن می‌کند و انتخاب هدف و مسیر زندگی را روشن‌تر می‌سازد.</p>
+ <div class="callout example"><b>مثال:</b><p>وقتی چرخ خودرو در شن گیر می‌کند، گازدادنِ بیشتر آن را عمیق‌تر فرو می‌برد. راننده باید وضعیت خودرو و راه خروج را بشناسد. در زندگی هم تلاش بدون شناخت خود و انتخاب مسیر مناسب ممکن است نتیجهٔ معکوس بدهد.</p></div>
+ <h2 class="section">آمادگی مهم‌تر از داراییِ تنها</h2>
+ <p>آمادگی ازدواج تنها به پول، خانه و ماشین محدود نیست؛ همراهی، تحمل دشواری، گذشت، شنیدن نظر مخالف و حل مسئله نیز اهمیت دارند.</p>
+ 
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">21</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۵. سه خطای خودشناسی و معیارهای شناخت</h1>
+      <div class="body">
+ <h2 class="section">سه اشتباه رایج در خودشناسی</h2>
+ <ol><li><b>شناخت فقط ظاهر و مشخصات شناسنامه‌ای:</b> قد، سن، محل تولد و خانواده تنها بخشی از تصویرند. میان ویژگی‌هایی که به ارث برده‌ایم یا در آن دخالتی نداشته‌ایم و بخش‌هایی که با انتخاب و تمرین می‌توانیم تغییر دهیم، فرق بگذارید.</li>
+ <li><b>کافی‌دانستن تست و پرسش‌نامه:</b> آزمون شخصیتی می‌تواند سرنخ بدهد، اما چند سؤال شناخت کاملِ انسان نیست. «توهم شناخت کامل» خودش مانع دیدن واقعیت می‌شود.</li>
+ <li><b>خودشناسیِ زمان‌دار:</b> خودشناسی پروژه‌ای نیست که در یک هفته تمام شود؛ فرایندی مداوم است و تجربه‌های تازه می‌توانند تصویر ما از خود را اصلاح کنند.</li></ol>
+ <h2 class="section">هفت معیارِ شناخت خود و گزینهٔ ازدواج</h2>
+ <table><thead><tr><th>#</th><th>معیار</th><th>پرسش نمونه</th></tr></thead><tbody>
+ <tr><td>۱</td><td>استقلال فکری</td><td>در تصمیم‌ها چقدر مشورت می‌کنم؟ مرز حمایت خانواده و دخالت کجاست؟</td></tr>
+ <tr><td>۲</td><td>هوش و مهارت‌های ارتباطی/اخلاقی</td><td>اختلاف را چطور بیان می‌کنم؟ چه چیزی از گذشته را باید و چه زمانی بگویم؟</td></tr>
+ <tr><td>۳</td><td>بلوغ و هوش عاطفی</td><td>هنگام خشم، افسردگی یا شک چه می‌کنم؟ چگونه به حالت عادی برمی‌گردم؟</td></tr>
+ <tr><td>۴</td><td>بلوغ و فهم اقتصادی</td><td>درآمد، خرج و پس‌اندازم چیست؟ دربارهٔ اشتغال و مدیریت مالی چه نظری دارم؟</td></tr>
+ <tr><td>۵</td><td>تعهد و مسئولیت‌پذیری</td><td>تعهدهای من و همسر آینده‌ام چیست؟ مسئولیت‌ها چگونه تقسیم می‌شوند؟</td></tr>
+ <tr><td>۶</td><td>رشد، آگاهی و سلامت جنسی</td><td>سبک زندگی و آگاهی لازم را چگونه بررسی و در صورت نیاز کسب می‌کنم؟</td></tr>
+ <tr><td>۷</td><td>تناسب اعتقادی و فرهنگی</td><td>دین‌داری، پوشش، خانواده، آداب ازدواج و باورهای ما چقدر سازگارند؟</td></tr>
+ </tbody></table>
+ <div class="callout exam"><b>هفت معیار شناخت</b><p>استقلال فکری، مهارت ارتباطی و اخلاقی، بلوغ عاطفی، فهم اقتصادی، تعهد، رشد، آگاهی و سلامت جنسی؛ تناسب اعتقادی/فرهنگی.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">22</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۶. از خودشناسی تا تصمیم؛ اقدام و مشاوره</h1>
+      <div class="body">
+ <h2 class="section">چکیدهٔ عملیِ فرایند شناخت</h2>
+ <div class="steps"><div><b>۱. پرسش</b><span>دربارهٔ ویژگی‌های فردی، خانوادگی، باورها، سبک زندگی و آینده گفت‌وگو کنید.</span></div><div><b>۲. مشاوره</b><span>در صورت نیاز از ارزیابی و مشاورهٔ پیش از ازدواج با مشاور امین و متخصص بهره بگیرید.</span></div><div><b>۳. تحقیق</b><span>دربارهٔ گزینهٔ ازدواج و خانوادهٔ او تحقیق میدانی کنید.</span></div></div>
+ 
+ <h2 class="section">چهار عامل مهم شکست ازدواج</h2>
+ <ol><li>بی‌توجهی به ویژگی‌های فردی و خانوادگیِ خود و همسر پیش از ازدواج.</li>
+ <li>تصمیم‌گیری صرفاً بر اساس هیجان و احساس اولیه.</li>
+ <li>نداشتن آمادگی یا مهارت ارتباطی و تلاش‌نکردن برای بهبود آن.</li>
+ <li>استفاده‌نکردن از مشاوره، یا مشورت‌گرفتن از افراد غیرمتخصص به‌جای مشاور امین.</li></ol>
+ <div class="callout caution"><b>مراقب دو سوی افراط باشید</b><p>شناخت ناکافی و تصمیم عجولانه یک خطر است؛ اما وسواس، کمال‌گرایی و افزودن شرط‌های بی‌پایه نیز فرایند انتخاب را از مسیر خارج می‌کند.</p></div>
+ <div class="callout summary"><b>جمع‌بندی</b><p>شناختِ خود و طرف مقابل، آمادگی، مهارت ارتباطی، مشاورهٔ معتبر و تحقیقِ سنجیده، ارکان فرایند انتخاب‌اند.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">23</span></div>
+    </section><section class="page divider" data-icon="۵">
+      <div class="pill">درس ۵ از ۵</div>
+      <div class="icon"><div class="icon-mark"><i></i><i></i><i></i><b></b></div></div>
+      <div class="label">درس ۵</div>
+      <h1>معیارهای انتخاب همسر</h1>
+      <div class="sub">معیارهای اصلی، فرعی و سنجش تناسب</div>
+      <div class="meta">صفحه‌های ۲۵ تا ۲۸</div>
+      <div class="stats"><div class="stat"><strong>۵</strong><span>معیار اصلی</span></div><div class="stat"><strong>۵</strong><span>حالتِ کشش</span></div><div class="stat"><strong>۲</strong><span>دستهٔ معیار</span></div></div>
+      <div class="topics"><div class="topic-row"><span class="topic">کشش اولیه و تصمیم آگاهانه</span><span class="topic">دین‌داری و جهان‌بینی</span></div><div class="topic-row"><span class="topic">اخلاق، سلامت و خانواده</span><span class="topic">همسانی‌های فرعی و امانت‌داری</span></div></div>
+      <div class="bottomline">HumsYar · دانش خانواده و جمعیت</div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۷. معیارهای انتخاب؛ اصلی، فرعی و کشش اولیه</h1>
+      <div class="body">
+ <p>ملاک صحیح در هر چیزی، ملاکی است که در ایجاد هدف از آن امر نقش داشته باشد و اگر چیزی در تحقق هدف نقشی نداشته باشد، ملاک صحیحی نیست. معیارهای انتخاب دو دسته‌اند:</p>
+ <table><thead><tr><th>نوع</th><th>تعریف</th><th>نکته</th></tr></thead><tbody>
+ <tr><td><b>اصلی</b></td><td>رکن و اساسِ تحقق یک زندگی پایدار و سعادتمندانه</td><td>وجود این معیارها برای زندگی پایدار ضروری است.</td></tr>
+ <tr><td><b>فرعی</b></td><td>برای بهتر و کامل‌ترشدن زندگی؛ وابسته به سلیقه و موقعیت افراد</td><td>نبودِ معیار فرعی یا برخی از آن‌ها مانع ازدواج نیست.</td></tr>
+ </tbody></table>
+ <h2 class="section">معیار اول — کشش اولیه</h2>
+ <div class="callout example"><b>مثال:</b><p>معلمی چهرهٔ زیبایی نداشت، اما صمیمانه ارتباط برقرار می‌کرد و درس را ساده می‌گفت. دانش‌آموزانی که این ویژگی‌ها را مهم می‌دانستند، از همان جلسهٔ اول او را می‌پسندیدند. پس «به دل نشستن» لزوماً به زیبایی ظاهری وابسته نیست.</p></div>
+ <p>پنج حالتِ کشش اولیه در دیدار نخست:</p>
+ <table><thead><tr><th>حالت</th><th>شرح</th><th>راهنمای تصمیم</th></tr></thead><tbody>
+ <tr><td>اشتیاق</td><td>کشش روشن و مثبت</td><td>آشنایی را ادامه دهید.</td></tr>
+ <tr><td>تمایل</td><td>حس مثبتِ ملایم</td><td>به مراحل بعد بروید.</td></tr>
+ <tr><td>تردید</td><td>میان تمایل و اکراه</td><td>جلسات بیشتر برای شناخت اخلاق و روحیه.</td></tr>
+ <tr><td>اکراه</td><td>بی‌میلی، اما نه تنفر</td><td>اگر پس از شناخت باقی ماند، گام بعدی را برندارید.</td></tr>
+ <tr><td>انزجار</td><td>تنفر یا نبودِ تمایل جدی</td><td>پایان‌دادن به فرایند خواستگاری.</td></tr>
+ </tbody></table>
+ <div class="callout exam"><b>تصمیم روشن</b><p>در حالتِ انزجار، روند خواستگاری پایان می‌یابد؛ در تردید، شناخت بیشتر لازم است.</p></div>
+ <div class="callout caution"><b>تفاوتِ احساس دو طرف</b><p>اگر یک طرف اشتیاق و طرف دیگر انزجار دارد، این تفاوت باید متناسب با شرایط روشن و منتقل شود تا هیچ‌کس در بلاتکلیفی و مقایسهٔ ذهنی نماند.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">25</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۸. معیار اصلی؛ اعتقاد و جهان‌بینی</h1>
+      <div class="body">
+ <p>اعتقاد و جهان‌بینی بر هدف‌های زندگی، ارزش‌های اخلاقی و شیوهٔ زندگی خانوادگی اثر می‌گذارند؛ ازاین‌رو، همسانی در این زمینه از معیارهای اصلی انتخاب همسر است.</p>
+ <ul><li>باورهای دینی و جهان‌بینیِ هر فرد از خانواده، جامعه، فرهنگ و تجربه‌هایش اثر می‌پذیرد.</li>
+ <li>همسانی در اصل باور و نیز در <b>مراتب دین‌داری</b> اهمیت دارد؛ تفاوتِ جدی در عمل و ارزش‌ها می‌تواند در تصمیم‌های روزمره آشکار شود.</li></ul>
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | بقره/۲۲۱</b>
+   <p class="quran-ar" dir="rtl" lang="ar">وَلَا تَنْكِحُوا الْمُشْرِكَاتِ حَتَّىٰ يُؤْمِنَّ ۚ وَلَأَمَةٌ مُؤْمِنَةٌ خَيْرٌ مِنْ مُشْرِكَةٍ وَلَوْ أَعْجَبَتْكُمْ ۗ وَلَا تُنْكِحُوا الْمُشْرِكِينَ حَتَّىٰ يُؤْمِنُوا ۚ وَلَعَبْدٌ مُؤْمِنٌ خَيْرٌ مِنْ مُشْرِكٍ وَلَوْ أَعْجَبَكُمْ ۗ أُولَٰئِكَ يَدْعُونَ إِلَى النَّارِ ۖ وَاللَّهُ يَدْعُو إِلَى الْجَنَّةِ وَالْمَغْفِرَةِ بِإِذْنِهِ ۖ وَيُبَيِّنُ آيَاتِهِ لِلنَّاسِ لَعَلَّهُمْ يَتَذَكَّرُونَ</p>
+   <p class="quran-meaning"><b>معنی:</b> با زنان مشرک ازدواج نکنید تا ایمان بیاورند؛ کنیز باایمان از زن آزادِ مشرک بهتر است، هرچند زیبایی، مال یا موقعیت او شما را خوش آید. زنان باایمان را نیز به ازدواج مردان مشرک درنیاورید تا ایمان بیاورند؛ بردهٔ باایمان از مرد آزادِ مشرک بهتر است، هرچند او شما را خوش آید. آنان به آتش فرامی‌خوانند، و خدا به اذن خود به بهشت و آمرزش دعوت می‌کند و آیاتش را برای مردم روشن می‌سازد تا پند گیرند.</p>
+   <p class="quran-note"><b>پیوند با مبحث:</b> متن درس از آیه برای توضیح همسانی ایمانی در ازدواج استفاده می‌کند.</p>
+ </div>
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | حجرات/۱۳</b>
+   <p class="quran-ar" dir="rtl" lang="ar">يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا ۚ إِنَّ أَكْرَمَكُمْ عِندَ اللَّهِ أَتْقَاكُمْ ۚ إِنَّ اللَّهَ عَلِيمٌ خَبِيرٌ</p>
+   <p class="quran-meaning"><b>معنی:</b> ای مردم، شما را از مرد و زن آفریدیم و ملت‌ها و قبیله‌ها قرار دادیم تا یکدیگر را بشناسید؛ گرامی‌ترین شما نزد خدا پرهیزگارترین شماست؛ خدا دانا و آگاه است.</p>
+   <p class="quran-note"><b>پیوند با مبحث:</b> معیار کرامت در آیه، تقواست، نه نژاد و تبار.</p>
+ </div>
+ <div class="callout hadith"><b>روایت همراه</b><p>در روایت امام حسن(ع)، انتخاب همسر باتقوا سفارش شده است؛ دینداری بر زیباییِ صرف ترجیح دارد.</p></div>
+ <p>همتایی دینی به معنای یکسان‌بودن همهٔ جزئیات نیست؛ تفاوت در عبادت، ارزش‌ها، فرزندپروری و سبک زندگی باید روشن شود.</p>
+ <div class="callout remember"><b>پرسش‌های گفت‌وگو</b><p>نقش خدا و دین در زندگی ما چیست؟ میزان پایبندی‌مان به عبادت و ارزش‌ها چقدر است؟ دیدگاه خانواده‌ها دربارهٔ پوشش، مهریه، جهیزیه و مراسم چیست؟</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">26</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۱۹. معیار اصلی؛ اخلاق، سلامت و تناسب خانوادگی</h1>
+      <div class="body">
+ <h2 class="section">۳) ارزش‌های اخلاقی</h2>
+ <p><b>حسن خلق</b> شامل فروتنی، نیکوگفتاری، خوش‌رویی و مهربانی است. <b>عفاف</b> در پوشش، نگاه، گفت‌وگو با نامحرم و پرهیز از روابط دوستانه با جنس مخالف مطرح است. غیرتِ متعادل با بدبینی افراطی تفاوت دارد؛ صبر و استقامت، پرهیز از مادی‌گرایی و تفاخر، و خیرخواهی نیز در اخلاق خانوادگی اهمیت دارند. در زنان بر نرم‌خویی، سپاسگزاری و پرهیز از پرخاشگری نیز تأکید شده است.</p>
+ <table><thead><tr><th>ویژگی‌های سازنده</th><th>رفتارهای آسیب‌زا</th></tr></thead><tbody>
+ <tr><td>صداقت، مسئولیت‌پذیری، وفاداری، اعتماد، احترام، مهربانی، دلسوزی، فروتنی، صبر، گذشت، نرم‌خویی، عفت، خیرخواهی و انصاف</td><td>خودخواهی، خودمحوری، برتری‌جویی، حسادت، بخل، طمع، کینه‌توزی، ناسپاسی، عیب‌جویی، فحاشی، بدزبانی و لجاجت</td></tr>
+ </tbody></table>
+ <h2 class="section">۴) سلامت جسمی</h2>
+ <p>منظور از <b>سلامت جسمانی</b> آن است که فرد از بیماری‌هایی که اهداف ازدواج را به مخاطره می‌اندازند، مصون باشد. سلامت نسبی و دارای مراتب مختلف است؛ شدت بیماری می‌تواند از سرماخوردگی ساده تا بیماری‌های پیشرفته و خطرناک متفاوت باشد. توان باروری و فرزندآوری نیز از ابعاد جسمانیِ مرتبط با هدف تشکیل خانواده است و در مقایسهٔ مطرح‌شده، بر زیبایی ظاهری مقدم دانسته شده است.</p>
+ <div class="callout caution"><b>شفافیت و مشورت</b><p>بیماریِ مؤثر بر زندگی مشترک باید در فرایند شناخت، صادقانه و با راهنمایی متخصص مطرح شود؛ بیماری خفیف با بیماری جدی یکسان نیست.</p></div>
+ <h2 class="section">۵) تناسب خانوادگی</h2>
+ <p><b>تناسب خانوادگی:</b> ازدواج پیوند دو نفر و تا حدی پیوند دو خانواده است. اصالت خانواده یعنی سالم و خوش‌نام‌بودن آن؛ شیوهٔ تربیت، ارزش‌ها و امکان تعامل سالم خانواده‌ها نیز اهمیت دارند.</p>
+ <ul><li>تناسب خانوادگی به معنای یکسانیِ همهٔ جزئیات، هم‌طبقه‌بودن، تشابه قومیتی یا برابری اقتصادی نیست.</li><li>خوش‌نامی و محیط تربیتی خانواده را بسنجید؛ نه اینکه از معرفی خانواده به‌عنوان خانوادهٔ عروس یا داماد شرمنده باشید.</li></ul>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">27</span></div>
+    </section><section class="page paper">
+      <div class="kicker">جزوهٔ جمع‌بندی · دانش خانواده و جمعیت</div>
+      <h1 class="title">۲۰. معیارهای فرعی، اقتصاد و امانت‌داری</h1>
+      <div class="body">
+ <h2 class="section">همسانی اجتماعی</h2>
+ <p>تفاوت طبقهٔ اجتماعی، قومیت یا محل سکونت به‌تنهایی دلیل ردّ گزینه نیست. <b>حجرات/۱۳</b> (متن و معنی در کادر ص۲۶) معیار کرامت را تقوا می‌داند؛ بااین‌حال، تفاوت فرهنگیِ اثرگذار بر زندگی روزمره باید سنجیده شود.</p>
+ <div class="callout caution"><b>استثنای مهم</b><p>اگر تفاوت فرهنگی یا عرفی در زندگی روزمرهٔ یک زوج به مسئله‌ای جدی تبدیل شود، همان مورد می‌تواند برای آن دو نفر اهمیت اصلی پیدا کند. «فرعی» یعنی همگانی و مطلق نیست؛ نه اینکه همیشه بی‌اهمیت باشد.</p></div>
+ <h2 class="section">خصوصیات اقتصادی</h2>
+ <ul><li>ثروت به‌تنهایی معیار انتخاب یا رد نیست؛ <b>نور/۳۲</b> (کادر ص۹) به فراهم‌کردن زمینهٔ ازدواج و <b>اسراء/۳۱</b> به پرهیز از ترس فقر اشاره دارد.</li><li>مسئولیت‌پذیری اقتصادی و تلاش برای تأمین خانواده اهمیت دارد.</li><li>انتخاب همسر صرفاً بر پایهٔ پول یا زیبایی، کافی نیست.</li></ul>
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | اسراء/۳۱</b>
+   <p class="quran-ar" dir="rtl" lang="ar">وَلَا تَقْتُلُوا أَوْلَادَكُمْ خَشْيَةَ إِمْلَاقٍ ۖ نَحْنُ نَرْزُقُهُمْ وَإِيَّاكُمْ ۚ إِنَّ قَتْلَهُمْ كَانَ خِطْئًا كَبِيرًا</p>
+   <p class="quran-meaning"><b>معنی:</b> فرزندانتان را از بیم تنگ‌دستی نکشید؛ ما به آنان و شما روزی می‌دهیم؛ کشتن آنان گناهی بزرگ است.</p>
+ </div>
+ <h2 class="section">امانت‌داری و روزی حلال</h2>
+ <p>حفظ اسرار و اموال همسر از نشانه‌های امانت‌داری است. در کسب‌وکار و تأمین خانواده، رعایت حلال و حرام اهمیت دارد؛ در منبع به عبارتِ <b>اسراء/۶۴</b> استناد شده است:</p>
+ <div class="callout quran"><b class="quran-title">آیهٔ کامل | اسراء/۶۴</b>
+   <p class="quran-ar" dir="rtl" lang="ar">وَاسْتَفْزِزْ مَنِ اسْتَطَعْتَ مِنْهُمْ بِصَوْتِكَ وَأَجْلِبْ عَلَيْهِمْ بِخَيْلِكَ وَرَجِلِكَ وَشَارِكْهُمْ فِي الْأَمْوَالِ وَالْأَوْلَادِ وَعِدْهُمْ ۚ وَمَا يَعِدُهُمُ الشَّيْطَانُ إِلَّا غُرُورًا</p>
+   <p class="quran-meaning"><b>ترجمهٔ آیه:</b> هرکس از آنان را که می‌توانی با صدایت برانگیز؛ سواره‌نظام و پیاده‌نظامت را بر آنان بسیج کن؛ در اموال و فرزندانشان شریک شو و به آنان وعده بده؛ وعده‌های شیطان جز فریب نیست.</p>
+ </div>
+ <div class="callout quran quran-explanation">
+   <b class="quran-title">توضیح تفسیریِ منبع | اسراء/۶۴</b>
+   <p class="quran-meaning"><b>توضیحِ کتاب:</b> منبع، «مشارکت در اموال و فرزندان» را به مالی پیوند می‌دهد که از راه حرام یا معصیت به دست آمده است؛ بر همین مبنا، رعایت حلال و حرام در کسب‌وکار و تأمین معاش را یادآوری می‌کند.</p>
+ </div>
+ <table><thead><tr><th>معیار</th><th>پرسش کاربردی</th></tr></thead><tbody>
+ <tr><td>اقتصاد</td><td>آیا فرد مسئولیت مالی می‌پذیرد و دربارهٔ کار، خرج و پس‌انداز شفاف است؟</td></tr>
+ <tr><td>امانت‌داری</td><td>آیا می‌توان اسرار و دارایی مشترک را با اعتماد به او سپرد؟</td></tr>
+ <tr><td>روزی حلال</td><td>آیا دربارهٔ منبع درآمد و مرزهای اخلاقیِ کسب‌وکار گفت‌وگوی روشن داریم؟</td></tr>
+ </tbody></table>
+ <div class="callout summary"><b>جمع‌بندی</b><p>معیارهای اصلی: کشش اولیه، اعتقاد و جهان‌بینی، ارزش‌های اخلاقی، سلامت جسمی و تناسب خانوادگی. معیارهای فرعی با توجه به فرد و موقعیت سنجیده می‌شوند.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">28</span></div>
+    </section><section class="page paper">
+      <div class="kicker">مرور سریع</div>
+      <h1 class="title">مرور شب امتحان — برگهٔ اول</h1>
+      <div class="body">
+ <h2 class="section">اعداد و فهرست‌های حفظی</h2>
+ <table><thead><tr><th>موضوع</th><th>مرور سریع</th></tr></thead><tbody>
+ <tr><td>نیازهای اساسی</td><td>۵ مورد: زیستی، امنیتی، ارتباطی، شخصیتی، متعالی.</td></tr>
+ <tr><td>تشبیه لباس</td><td>۷ نکته: تناسب، زینت، پوشاندن عیب، حفاظت، حریم، سازگاری با نیاز، دوری از گناه.</td></tr>
+ <tr><td>دوره‌های رفتار</td><td>۵ دوره: خردسالی، کودکی، نوجوانی، ابتدای جوانی، ادامهٔ جوانی.</td></tr>
+ <tr><td>بازهٔ سنیِ جدول</td><td>تولد–۳؛ ۳–۱۲؛ ۱۲–۱۶؛ ۱۹–۲۶؛ پس از ۲۷ سالگی.</td></tr>
+ <tr><td>سن بلوغ قمری</td><td>دختر ۹ سال تمام؛ پسر ۱۵ سال تمام (نظر مشهور فقه امامیه).</td></tr>
+ <tr><td>نمونهٔ فاصله تا ازدواج</td><td>دختر ۱۲→۲۳؛ پسر ۱۵→۲۷ سال (بلوغ/میانگین ازدواج در مثال؛ نه سن بلوغ شرعی).</td></tr>
+ <tr><td>کارکردهای ازدواج</td><td>۱۰ مورد: عاطفی، جنسی، استقلال/مدیریت، دوری از دوستی‌های بی‌حاصل، اقتصادی، نسل، معنوی، جسمانی، رشد عاطفی/عقلانی، حکم خدا/ثواب.</td></tr>
+ <tr><td>عوامل تأخیرِ تحلیل‌شده</td><td>۲ عامل: استقلال مالی و نداشتن مهارت.</td></tr>
+ <tr><td>آمار ناباروری (۱۳۹۸)</td><td>۲۰٫۳٪؛ حدود ۳٬۲۶۰٬۰۰۰ زوج؛ افزایش سالانهٔ حدود ۸۸٬۰۰۰ زوج.</td></tr>
+ </tbody></table>
+ <h2 class="section">پیوندهای قرآنیِ کلیدی</h2>
+ <ul><li><b>روم/۲۱ و بقره/۱۸۷:</b> متن و معنی در کادرهای ص۵.</li><li><b>رعد/۲۸ و فجر/۲۷:</b> دو آیهٔ آرامش، ص۴.</li><li><b>نور/۳۲:</b> تشویق به ازدواج و فضل الهی، ص۹.</li><li><b>مؤمنون/۵–۶:</b> حفظ پاکدامنی، ص۱۵.</li><li><b>کهف/۴۶:</b> مال و فرزندان، ص۱۷.</li><li><b>بقره/۲۲۱ و حجرات/۱۳:</b> ایمان و تقوا، ص۲۶.</li><li><b>اسراء/۳۱ و ۶۴:</b> کادرهای تطبیقی، ص۲۸.</li></ul>
+ <div class="callout remember"><b>دو اصطلاحی که قاطی نشوند</b><p>«شور عاطفی» = برجستگی گرایش عاطفی؛ «ساختارسازی» = تمرکز بیشتر بر کار و سامان زندگی. بلوغ شرعی را با سن مناسب ازدواج یکی نگیرید.</p></div>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">29</span></div>
+    </section><section class="page paper">
+      <div class="kicker">مرور سریع</div>
+      <h1 class="title">مرور شب امتحان — برگهٔ دوم</h1>
+      <div class="body">
+ <h2 class="section">درس چهارم در یک نگاه</h2>
+ <table><thead><tr><th>فهرست</th><th>موارد</th></tr></thead><tbody>
+ <tr><td>۳ پرسش خودشناسی</td><td>خودشناسی چیست؟ چرا لازم است؟ بهترین روش چیست؟</td></tr>
+ <tr><td>۳ خطای خودشناسی</td><td>بسنده‌کردن به ظاهر؛ کامل‌دانستن تست؛ زمان‌دار دانستن فرایند.</td></tr>
+ <tr><td>۷ معیار شناخت</td><td>استقلال فکری؛ مهارت ارتباطی/اخلاقی؛ بلوغ عاطفی؛ فهم اقتصادی؛ تعهد؛ رشد، آگاهی و سلامت جنسی؛ تناسب اعتقادی/فرهنگی.</td></tr>
+ <tr><td>۴ عامل شکست</td><td>شناخت‌نکردن خود/خانواده و همسر؛ تصمیم صرفاً هیجانی؛ آمادگی و مهارت ناکافی؛ نگرفتن مشاورهٔ معتبر.</td></tr>
+ <tr><td>۳ روش شناخت</td><td>پرسش‌های کلیدی؛ تست و مشاوره با مشاور امین؛ تحقیق میدانی دربارهٔ گزینه و خانواده.</td></tr>
+ </tbody></table>
+ <h2 class="section">درس پنجم؛ معیارهای انتخاب</h2>
+ <ul><li><b>اصلی:</b> رکنِ تحقق زندگی سعادتمندانه؛ <b>فرعی:</b> بهبوددهنده، وابسته به فرد و موقعیت؛ نبودِ معیار فرعی به‌تنهایی مانع ازدواج نیست.</li><li><b>پنج حالت آغازین:</b> اشتیاق، تمایل، تردید، اکراه، انزجار؛ در تردید شناخت بیشتر، در انزجار توقف.</li><li><b>پنج معیار اصلی:</b> کشش اولیه، اعتقاد/جهان‌بینی، ارزش اخلاقی، سلامت جسم، تناسب خانوادگی.</li></ul>
+ <h2 class="section">تعریف‌های یک‌خطی</h2>
+ <table><thead><tr><th>اصطلاح</th><th>معنا</th></tr></thead><tbody>
+ <tr><td>اثر هاله‌ای</td><td>تعمیم یک ویژگیِ برجسته به برداشت کلی از فرد.</td></tr>
+ <tr><td>خودشناسی</td><td>فرایندی مداوم برای شناخت ویژگی‌ها، ارزش‌ها، ظرفیت‌ها و حوزه‌های رشد.</td></tr>
+ <tr><td>معیار اصلی</td><td>ویژگیِ بنیادین در تحقق هدف زندگی مشترک.</td></tr>
+ <tr><td>معیار فرعی</td><td>ویژگیِ تکمیلی که اهمیت آن به فرد و موقعیت بستگی دارد.</td></tr>
+ </tbody></table>
+ <div class="callout exam"><b>چک‌لیست ۱۰ دقیقهٔ آخر</b><p>پنج نیاز را از حفظ بگویید؛ ۱۰ کارکرد ازدواج را مرور کنید؛ شور عاطفی/ساختارسازی را مقایسه کنید؛ هفت معیار شناخت و چهار عامل شکست را نام ببرید؛ اصلی/فرعی و پنج حالت کشش را از هم تفکیک کنید.</p></div>
+ <p class="small-note">مرور نهایی: تعریف‌ها، دسته‌بندی‌ها، عددها و معیارهای اصلی را یک‌بار دیگر از حفظ بازگو کنید.</p>
+ </div>
+      <div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">30</span></div>
+    </section></body></html>

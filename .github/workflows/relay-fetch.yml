@@ -4,7 +4,7 @@ on:
   push:
     branches: [arena/01a10c1f-newnew]
     paths:
-      - '.relay/trigger.txt'
+      - '.relay/trigger-fetch.txt'
 
 permissions:
   contents: write

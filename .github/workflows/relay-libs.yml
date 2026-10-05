@@ -1,0 +1,60 @@
+name: relay-libs
+
+on:
+  push:
+    branches: [arena/01a10c1f-newnew]
+    paths:
+      - '.relay/trigger-libs.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  libs:
+    runs-on: ubuntu-latest
+    container: debian:bookworm
+    steps:
+      - name: Install helpers
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq --no-install-recommends ca-certificates curl git gnupg dpkg >/dev/null
+      - uses: actions/checkout@v4
+        with:
+          ref: arena/01a10c1f-newnew
+          fetch-depth: 1
+      - name: Download pango stack debs
+        run: |
+          set -eux
+          apt-get update -qq
+          apt-get install -y -qq --download-only --reinstall \
+            libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libfribidi0 libthai0 \
+            libdatrie1 libgraphite2-3 libicu72 libgdk-pixbuf-2.0-0 libcairo2 \
+            libpangocairo-1.0-0 libpixman-1-0 libxrender1 libxext6 libpng16-16 \
+            libcairo-gobject2 libthai-data fontconfig-config fonts-dejavu-core
+          ls -la /var/cache/apt/archives/*.deb | head -40
+      - name: Extract debs
+        run: |
+          set -eux
+          mkdir -p /tmp/root
+          for f in /var/cache/apt/archives/*.deb; do dpkg -x "$f" /tmp/root; done
+          mkdir -p /tmp/root/ret
+          cp -a /tmp/root/usr/lib/x86_64-linux-gnu/. /tmp/root/ret/ 2>/dev/null || true
+          # drop things that overlap with the base image's own C runtime
+          rm -f /tmp/root/ret/libc.so.6 /tmp/root/ret/libm.so.6 /tmp/root/ret/ld-linux-x86-64.so.2
+          rm -f /tmp/root/ret/libstdc++.so.6* /tmp/root/ret/libgcc_s.so.1
+          cp -a /tmp/root/etc/fonts /tmp/root/ret/fonts-config 2>/dev/null || true
+          find /tmp/root/ret -maxdepth 1 -type f | head -60
+          du -sh /tmp/root/ret
+          mkdir -p libs
+          tar czf libs/pango-stack-bookworm.tgz -C /tmp/root/ret .
+          ls -la libs/
+          dpkg-query -W -f='${Package}\t${Version}\n' > libs/deb-versions.txt || true
+          ls /var/cache/apt/archives/*.deb | xargs -n1 basename >> libs/deb-versions.txt
+      - name: Commit
+        run: |
+          set -eux
+          git config user.email "relay@users.noreply.github.com"
+          git config user.name "arena-relay"
+          git add -f libs
+          git commit -m "relay: pango/gdk-pixbuf stack (bookworm) for weasyprint" || echo nothing
+          git push origin HEAD:arena/01a10c1f-newnew
