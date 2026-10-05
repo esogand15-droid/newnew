@@ -14,41 +14,51 @@ jobs:
     runs-on: ubuntu-latest
     container: debian:bookworm
     steps:
+      - name: Install helpers
+        shell: sh
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq --no-install-recommends git ca-certificates curl bash >/dev/null
       - uses: actions/checkout@v4
         with:
           ref: arena/01a10c1f-newnew
           fetch-depth: 1
-      - name: Fetch debs
+      - name: All in one
+        shell: sh
         run: |
-          mkdir -p libs /tmp/x /tmp/debs
+          set -x
+          mkdir -p libs
           LOG=libs/relay-libs.log
-          echo "start $(date -u)" > $LOG
-          apt-get update >> $LOG 2>&1
-          apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts \
-            --no-breaks --no-replaces --no-enhances --no-pre-depends \
-            libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0 libharfbuzz0b \
-            libgdk-pixbuf-2.0-0 libcairo2 libfribidi0 libthai0 libgraphite2-3 \
-            libpixman-1-0 libthai-data libdatrie1 libicu72 >> $LOG 2>&1 || echo "dep-resolve-failed" >> $LOG
-          grep -oP '^\w[\w.+-]*' $LOG | sort -u > /tmp/pkgs.txt || true
-          cat /tmp/pkgs.txt >> $LOG
+          exec >> "$LOG" 2>&1
+          echo "=== start $(date -u) pwd=$(pwd) ==="
+          apt-get update -qq
+          apt-get install -y -qq --no-install-recommends git ca-certificates curl bash >/dev/null
+          echo "=== installed helpers ==="
+          PKGS="libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0 libharfbuzz0b libgdk-pixbuf-2.0-0 libcairo2 libfribidi0 libthai0 libgraphite2-3 libpixman-1-0 libthai-data libdatrie1 libicu72 libxrender1 libxext6 libpng16-16 libcairo-gobject2 libfontconfig1 libfreetype6 libglib2.0-0"
+          mkdir -p /tmp/debs /tmp/root
           cd /tmp/debs
-          while read -r pkg; do
-            apt-get download "$pkg" >> $LOG 2>&1 || echo "DOWNLOAD-FAILED $pkg" >> /home/runner/work/newnew/newnew/libs/relay-libs.log 2>/dev/null || true
-          done < /tmp/pkgs.txt
-          ls -la /tmp/debs >> /home/runner/work/newnew/newnew/libs/relay-libs.log 2>&1 || true
-          cd /tmp && mkdir -p /tmp/root && for f in /tmp/debs/*.deb; do dpkg -x "$f" /tmp/root || echo "EXTRACT-FAILED $f"; done
+          for p in $PKGS; do
+            apt-get download "$p" && echo "OK $p" || echo "FAILED $p"
+          done
+          ls -la /tmp/debs
+          for f in /tmp/debs/*.deb; do dpkg -x "$f" /tmp/root || echo "XFAIL $f"; done
           mkdir -p /tmp/root/ret
-          cp -a /tmp/root/usr/lib/x86_64-linux-gnu/. /tmp/root/ret/ 2>/dev/null || true
+          cp -a /tmp/root/usr/lib/x86_64-linux-gnu/. /tmp/root/ret/ || true
           rm -f /tmp/root/ret/libc.so.6 /tmp/root/ret/libm.so.6 /tmp/root/ret/ld-linux-x86-64.so.2 /tmp/root/ret/libstdc++.so.6* /tmp/root/ret/libgcc_s.so.1
-          tar czf libs/pango-stack-bookworm.tgz -C /tmp/root/ret . || echo "TAR-FAILED"
-          ls -la libs/ >> libs/relay-libs.log 2>&1 || true
-      - name: Publish
-        if: always()
-        run: |
+          ls /tmp/root/ret | head -80
+          tar czf /tmp/debs/pango-stack-bookworm.tgz -C /tmp/root/ret . || echo TARFAIL
+          echo "=== done ==="
+          ls -la /tmp/debs
+          # back to repo
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p libs
+          cp /tmp/debs/*.tgz libs/ || true
           ls -la libs
+          git config --global --add safe.directory "$GITHUB_WORKSPACE" || true
           git config user.email "relay@users.noreply.github.com"
           git config user.name "arena-relay"
           git add -f libs
-          git commit -m "relay: bookworm pango stack libs" || echo nothing
+          git commit -m "relay: bookworm pango stack libs" || echo "commit-nothing"
           git pull --rebase --autostash origin arena/01a10c1f-newnew || true
-          git push origin HEAD:arena/01a10c1f-newnew || git push -f origin HEAD:arena/01a10c1f-newnew || echo PUSH-FAILED
+          git push origin HEAD:arena/01a10c1f-newnew || echo "PUSHFAILED"
+          echo "=== end ==="
