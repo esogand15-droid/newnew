@@ -22,9 +22,14 @@ jobs:
           set -x
           mkdir -p .relay
           UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          curl -sL -c .relay/cookies.txt -b .relay/cookies.txt -A "$UA" \
-            -o .relay/ws.zip -D .relay/headers.txt \
-            "https://filebin.net/o378lqs26s3m2zaf/workspace-01a10303-8a6f-7ca4-a4d4-520958103cc2.zip"
+          URL="https://filebin.net/o378lqs26s3m2zaf/workspace-01a10303-8a6f-7ca4-a4d4-520958103cc2.zip"
+          rm -f .relay/cookies.txt
+          # 1st request -> gets the "verified" cookie
+          curl -s -c .relay/cookies.txt -b .relay/cookies.txt -A "$UA" -o /dev/null "$URL"
+          cat .relay/cookies.txt || true
+          # 2nd request -> real file
+          curl -sL -c .relay/cookies.txt -b .relay/cookies.txt -A "$UA" -e "$URL" \
+            -o .relay/ws.zip -D .relay/headers.txt "$URL"
           ls -la .relay
           head -30 .relay/headers.txt
           head -c 300 .relay/ws.zip | strings | head -10
