@@ -5,10 +5,15 @@ from PIL import Image
 import re
 
 ROOT = Path('/home/user')
+# The project can live either at /home/user (original layout) or inside a git
+# checkout whose root folder also contains work/ (e.g. /home/user/newnew).
+if not (ROOT / 'work' / 'render' / 'render.py').exists():
+    ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / 'work'
 ASSETS = WORK / 'render' / 'assets'
 FONTS = WORK / 'render' / 'fonts'
 OUT = ROOT / 'HumsYar_Danesh_Khanevadeh.pdf'
+BASE_URI = (WORK / 'render').as_uri()
 
 # Use the exact HumsYar logo supplied in the latest user attachment.
 # Its near-black background is softened to transparency so it sits cleanly on
@@ -41,6 +46,76 @@ DIVIDERS = [
     {"lesson":"۳","title":"کارکردهای ازدواج","subtitle":"ده کارکرد فردی، خانوادگی و اجتماعی","book":"کتاب، ص۴۷ تا ۶۸","range":"صفحه‌های ۱۴ تا ۱۸","stats":[("۱۰","کارکرد"),("۲","نوع رشد"),("۲۱","آیهٔ محوری روم")],"topics":["عاطفه و رابطهٔ سالم","امنیت و مسئولیت اقتصادی","نسل، معنویت و سلامت","رشد عاطفی و عقلانی"]},
     {"lesson":"۴","title":"سفر به ساحل آرامش","subtitle":"نقشهٔ راهِ فرایند ازدواج و خودشناسی","book":"کتاب، ص۶۹ تا ۸۸","range":"صفحه‌های ۲۰ تا ۲۳","stats":[("۳","پرسش خودشناسی"),("۷","معیار شناخت"),("۴","عامل شکست")],"topics":["شناخت پیش از ازدواج","مدیریت هیجان و اثر هاله‌ای","خودشناسیِ مداوم","پرسش، مشاوره و تحقیق"]},
     {"lesson":"۵","title":"معیارهای انتخاب همسر","subtitle":"معیارهای اصلی، فرعی و سنجش تناسب","book":"کتاب، ص۸۹ تا ۱۰۸","range":"صفحه‌های ۲۵ تا ۲۸","stats":[("۵","معیار اصلی"),("۵","حالتِ کشش"),("۲","دستهٔ معیار")],"topics":["کشش اولیه و تصمیم آگاهانه","دین‌داری و جهان‌بینی","اخلاق، سلامت و خانواده","همسانی‌های فرعی و امانت‌داری"]}
+]
+
+# ---------------------------------------------------------------------------
+# APPENDIX — «ضمیمه: آمارها، رویدادها، شخصیت‌های تاریخی و مثال‌های مفهومی»
+# ---------------------------------------------------------------------------
+# Only material taken from the source book (work/source.pdf, printed pages
+# 9-108) that is NOT already present on pages 1-30 of the booklet.
+# Every number, name and Arabic text was re-checked against the page image of
+# the source book before being written here; the audit table lives in
+# qc/appendix_audit.md and the verification table in QC_REPORT.md.
+# Priority: A = must appear, B = only if room remains (dropped first), C = never.
+APPENDIX = [
+ {"lesson":"۱","title":"درس اول · چرا ازدواج می‌کنم؟","book":"کتاب، ص۹ تا ۲۷","items":[
+  {"t":"آمار","h":"طول عمر؛ نخستین عامل غیرزیستی","p":"ازدواج یکی از نخستین عوامل غیرزیستیِ شناخته‌شده در بحث طول عمر است؛ نتیجهٔ بسیاری از تحقیقات نشان می‌دهد مردان متأهل از سطح سلامت جسمی و روانی بیشتری در مقایسه با همسالان مجرد خود برخوردارند.","s":"درس ۱، ص۶۳ کتاب"},
+  {"t":"آمار","h":"غربالگری و تغذیهٔ متأهلان","p":"به نقل کتاب، بر اساس بسیاری از تحقیقات بین‌المللی، متأهلان گرایش بیشتری به غربالگری بیماری‌های مزمن مانند سرطان پروستات، ریه و رودهٔ بزرگ دارند و بیماری‌شان زودتر شناخته و درمان می‌شود؛ در مقابل، گرایش افراد مجرد عمدتاً به تنقلات ناسالم و غذاهای فوری است.","s":"درس ۱، ص۶۳ کتاب"},
+  {"t":"تاریخی","h":"ماندلا؛ ۲۷ سال زندان و انفرادی","p":"ماندلا، آزادی‌خواه آفریقای جنوبی، به مبارزه با حکومت سلطه‌گر آپارتاید پرداخت و ۲۷ سال از زندگی خود را در زندان و بیشتر در انفرادی گذراند تا تبعیض نژادی را سرنگون کند و آزادی و عزت خود و مردم کشورش را به دست آورد؛ نمونهٔ برجستهٔ «نیاز شخصیتی» (عزت).","s":"درس ۱، ص۱۶ کتاب"},
+  {"t":"تاریخی","h":"گاندی و الگوگیری از «هیهات منا الذله»","p":"مهاتما گاندی، رهبر آزادی هند، امام حسین(ع) را الگوی خود در مبارزه با استعمار انگلیس معرفی می‌کرد. کتاب در پاورقی از او نقل می‌کند: «اگر بخواهیم هند را نجات دهیم، واجب است همان راهی را بپیماییم که حسین بن علی(ع) پیمود».","s":"درس ۱، ص۱۷ کتاب؛ به نقل مهارتما گاندی، ص۳۰۵"},
+  {"t":"تاریخی","h":"چگوارا و مالکوم ایکس","p":"چگوارا و مالکوم ایکس در کنار گاندی و ده‌ها چهرهٔ دیگر از جهان، کسانی بودند که در پاسخ به نیاز عزت و احترام خود و دیگران با سلطه‌گران به مبارزه پرداختند و برخی در این راه جان خود را از دست دادند.","s":"درس ۱، ص۱۶–۱۷ کتاب"},
+  {"t":"نقل","h":"آیت‌الله خامنه‌ای؛ زمان مناسب ازدواج","p":"اسلام اصرار دارد بر این که ازدواج هرچه زودتر، از آغاز احساس نیاز انجام گیرد؛ یعنی از همان وقتی که دختر و پسر احساس نیاز به داشتن همسر می‌کنند. دو دلیل: برکات و خیرات ازدواج پیش از تلف‌شدن عمر، و جلوگیری از طغیان‌های جنسی. به نقل کتاب، مراد از «من تزوج احرز نصف دینه» این است که نیمی از تهدیدی که انسان دربارهٔ دین خود می‌بیند، از طرف طغیان‌های جنسی است.","s":"درس ۱، ص۲۶ کتاب؛ به نقل سخنان رهبری در حاشیهٔ خطبهٔ عقد، ۱۳۸۰/۱۲/۰۹"},
+  {"t":"نقل","h":"ویل دورانت؛ فواید ازدواج به‌هنگام","p":"«اگر راهی پیدا شود که ازدواج در سن‌های طبیعی انجام گیرد، فحشا، امراض روانی، تنهایی بی‌ثمر، عزلت ناپسند و انحرافات جنسی که زندگی را لکه‌دار کرده است، تا نصف تقلیل خواهد یافت... عشق جنسی جوانان زودتر از توانایی اقتصادی آنان فرا می‌رسد؛ ما نباید از این پیشامد روگردان باشیم و بگذاریم آن عشق افسرده شود و بمیرد».","s":"درس ۱، ص۲۶–۲۷ کتاب؛ به نقل لذات فلسفه، قسمت چهارم"},
+  {"t":"روایت","h":"«من تزوّج احرز نصف دینه»","p":"«مَنْ تَزَوَّجَ احْرَزَ نِصْفَ دِینِه»؛ هرکس ازدواج کند، نیمی از دین خود را حفظ کرده است.","ar":"مَنْ تَزَوَّجَ احْرَزَ نِصْفَ دِینِه","s":"وسائل‌الشیعه، ج۲۰، ص۱۷، ح۱۱؛ درس ۱، ص۲۶ و ص۶۵ کتاب"},
+  {"t":"نقل","h":"علامه طباطبایی؛ مکمل‌بودن زوج","p":"در توضیح آیهٔ روم/۲۱: زن و مرد هرکدام ناقص خلق شده‌اند و هر یک مکمل دیگری است؛ انسان اگر نقصی داشته باشد ناآرام است و وقتی نقص او برطرف شود، خوشحال و آرام می‌شود. به همین دلیل فقط به هر یک از طرفین «زوج» گفته می‌شود و چنین چیزی در هیچ‌یک از طرف‌های ارتباطی دیگر وجود ندارد.","s":"درس ۱، ص۱۳–۱۴ کتاب"},
+ ]},
+ {"lesson":"۲","title":"درس دوم · آسیب‌های تأخیر ازدواج","book":"کتاب، ص۲۹ تا ۴۶","items":[
+  {"t":"آمار","h":"تحقیق میدانی ۵۰۰ نفری انگلستان","p":"در یک تحقیق میدانی روی ۵۰۰ تن از جوانان انگلستان، نتیجه این بود که جوانان پس از ازدواج و تشکیل خانواده کمتر به اعمال مجرمانه و خلاف‌کاری روی می‌آورند و در مقابل، افراد مجرد به اعمال خلاف و بزه‌کاری اجتماعی بیشتر روی می‌آورند.","s":"درس ۲، ص۴۴ کتاب"},
+  {"t":"آمار","h":"۹۵٪ مجرد در دستگیرشدگان","p":"تحلیل آماری دستگیرشدگان ناآرامی‌های اخیر ایران نشان داد ۹۵٪ این افراد مجرد بودند.","s":"درس ۲، ص۴۵ کتاب؛ به نقل اعتمادآنلاین، کد خبر ۵۷۸۸۸۲"},
+  {"t":"آمار","h":"فرانسه؛ ۴۰۰۰ بازداشتی با میانگین ۱۷ سال","p":"جرالد دارمنن، وزیر کشور فرانسه: «در ناآرامی‌های فرانسه ۴۰۰۰ تن بازداشت شدند که سن‌شان به‌طور میانگین ۱۷ سال است».","s":"درس ۲، ص۴۵ کتاب؛ به نقل ایسنا، ۱۵ تیر ۱۴۰۲"},
+  {"t":"نقل","h":"سایمون بارون‌کوهن؛ «زن چیست؟ مرد کیست؟»","p":"سِر سایمون فیلیپ بارون‌کوهن، زادهٔ ۱۵ اوت ۱۹۵۸ در لندن، روان‌شناس بالینی بریتانیایی و استاد آسیب‌شناسی روانی رشد در دانشگاه کمبریج، مدیر مرکز پژوهش اوتیسم دانشگاه و عضو کالج ترینیتی؛ کتاب «زن چیست؟ مرد کیست؟» از اوست.","s":"درس ۲، ص۴۱ کتاب، پاورقی"},
+  {"t":"استدلال","lvl":"B","h":"قرنطینه‌سازی و افت مهارت‌آموزی","p":"در گذشته سن یادگیری مهارت‌های زندگی پایین بود: دختر با نگهداری خواهر و برادر کوچک‌تر، پخت نان، دوشیدن شیر و بافت قالی تا ۱۴ سالگی «کدبانو» می‌شد و پسر همراه پدر کارهای مردانه را یاد می‌گرفت. امروزه با کم‌شدن فرزندان، امکانات رفاهی (لباسشویی، جاروبرقی، مایکروویو) و به تعبیر کتاب «قرنطینه‌سازی» فرزندان در فضای آموزش و پرورش، این یادگیری کم شده است.","s":"درس ۲، ص۳۵ کتاب؛ سطح B"},
+  {"t":"استدلال","lvl":"B","h":"نسل امروز بی‌مهارت نیست، آموزش کم است","p":"جوانان امروز دارای هوش و استعداد بالایی هستند، ولی والدین و نهادهای آموزشی آنان را در مسیر مهارت‌آموزی قرار نداده‌اند؛ همین فرزند وقتی در مسیر مهارت قرار گیرد، بسیار بهتر از نسل قبل عمل می‌کند و خیلی سریع‌تر از والدین خود رانندگی، کار با رایانه یا گوشی را یاد می‌گیرد.","s":"درس ۲، ص۳۶ کتاب؛ سطح B"},
+  {"t":"استدلال","lvl":"B","h":"«نبود امکانات، بهانه است»","p":"اگر جوانی شغلی و درآمدی داشته باشد یا کسی تأمین مخارج او را وعده دهد، بهانه‌ای برای ازدواج نکردن ندارد؛ ولی با وعدهٔ دیگران ممکن است پس از ازدواج بیکار شود یا آن نیکوکار ورشکسته شود. کسانی که نبود امکانات را مانع می‌دانند در حقیقت بهانه می‌آورند؛ خدا وعده داده اگر کسی ازدواج کند و ناتوان باشد، او را از فضل خود بی‌نیاز می‌کند.","s":"درس ۲، ص۳۱–۳۲ کتاب؛ سطح B"},
+  {"t":"استدلال","lvl":"B","h":"آثار روانی روابط جایگزین","p":"اضطراب و افسردگی در دختران و بدبینی و شک در پسران، از کم‌ترین آثار روابط دختر و پسر است؛ حتی پس از ازدواج با فرد دیگر، سایهٔ آن رابطه در زندگی جدید نمایان می‌شود. بهانهٔ شروع این روابط «شناخت برای ازدواج» است، ولی در اکثر موارد به ازدواج ختم نمی‌شود و پسران دوستی را جایگزین ازدواج می‌دانند.","s":"درس ۲، ص۴۰–۴۱ کتاب؛ سطح B"},
+ ]},
+ {"lesson":"۳","title":"درس سوم · کارکردهای ازدواج","book":"کتاب، ص۴۷ تا ۶۸","items":[
+  {"t":"روایت","h":"«ما بُنی فی الاسلام بناءٌ أحبُّ الی الله...»","p":"«هیچ کانونی در اسلام برپا نشده است که نزد خداوند ـ عزّ و جلّ ـ از کانون ازدواج محبوب‌تر و عزیزتر باشد».","ar":"ما بُنیَ فِی الاسلامِ بَناءٌ اَحَبُّ اِلی اللهِ عَزَّ وَ جَلَّ اَعَزَّ مِنَ التَّزویج","s":"بحارالانوار، ج۱۰۰، ص۲۲۲، باب۱، ح۴۰؛ درس ۳، ص۶۷ کتاب"},
+  {"t":"روایت","h":"«رُذالُ موتاکمُ العزّاب»","p":"«بدترین مردگان شما، عزب‌هایند»؛ و در روایت دیگر: «اگر عزب‌ها [کسانی که بدون همسر از دنیا رفتند] بار دیگر به دنیا بازگردند، حتماً ازدواج خواهند کرد».","ar":"رُذالُ مَوْتاکمُ الْعُزّاب","s":"درس ۳، ص۶۷ کتاب؛ روایت دوم در المهذب البارع، مقدمات کتاب النکاح"},
+  {"t":"روایت","h":"«اِتَّخِذوا الأهلَ؛ فإنّه أرزَقُ لکم»","p":"رسول خدا(ص) نیز امر به ازدواج کرده و آن را مایهٔ جلب روزی بیشتر دانسته‌اند: «اِتَّخِذوا الأهلَ؛ فإنّه أرزَقُ لکم».","ar":"اِتَّخِذُوا الاَهْلَ؛ فَاِنَّهُ اَرْزَقُ لَکُم","s":"وسائل‌الشیعه، ج۲۰، ص۴۳؛ درس ۳، ص۵۹ کتاب"},
+  {"t":"نقل","h":"شهید مطهری؛ کشیش و کاردینال","p":"«هرگز یک کشیش و یک کاردینال که تجرد را امری مقدس و ازدواج را مانع تکامل می‌دانند، به‌صورت یک انسان کامل درنمی‌آید، اگر واقعاً در کاردینالی خودش صادق باشد».","s":"به نقل مرتضی مطهری، تعلیم و تربیت در اسلام ۱۳۶۷؛ درس ۳، ص۶۲ کتاب"},
+  {"t":"نقل","h":"روسو؛ نظارت شوهر بر رفتار همسر","p":"«اغلب فیلسوفان و اندیشمندان اجتماعی با این نظر روسو موافق بوده‌اند که شوهر باید بر رفتار همسرش نظارت کند؛ زیرا برای او اهمیت دارد که بداند کودکانی که ناگزیر از شناسایی و پرورش آن‌هاست، به کسی جز خودش تعلق ندارند».","s":"به نقل اسلام و جامعه‌شناسی خانواده ۱۳۹۰؛ درس ۳، ص۶۲ کتاب"},
+  {"t":"استدلال","lvl":"B","h":"کارکرد عاطفی در جوامع صنعتی","p":"به اعتقاد برخی جامعه‌شناسان، ارضای نیازهای عاطفی مهم‌ترین کارکردی است که می‌تواند بقای خانواده را در جوامع صنعتی جدید تضمین کند؛ همان‌گونه که غربی‌ها با الگوی هم‌باشی این مسئله را پاسخ داده و سیستم ازدواج را به‌شدت تضعیف کرده‌اند.","s":"درس ۳، ص۴۸ کتاب؛ سطح B"},
+  {"t":"مثال","lvl":"B","h":"آرمان و ریاست هنرستان","p":"آرمان، دانشجومعلم فعال و خوش‌خویی بود که پس از شروع معلمی، پیشنهاد ریاست یک هنرستان به او شد؛ با پذیرش ریاست، آرامش دوران معلمی را از دست داد و حتی گاهی شب‌ها با والدین دانش‌آموزان دربارهٔ وضعیت تحصیلی فرزندشان صحبت می‌کرد، اما ناراحت نبود چون آن را ناشی از ارتقای مسئولیت و رشد خود می‌دید. ازدواج نیز ارتقایی از «تنهایی» به «ما شدن» است و به همان میزان مسئولیت جدید ایجاد می‌کند.","s":"درس ۳، ص۵۲ کتاب؛ سطح B"},
+ ]},
+ {"lesson":"۴","title":"درس چهارم · سفر به ساحل آرامش","book":"کتاب، ص۶۹ تا ۸۸","items":[
+  {"t":"مثال","lvl":"B","h":"راز موفقیت؛ کشتی به گِل‌نشسته و قطار روی ریل","p":"ورود به بحث شناخت با مقایسهٔ دو گروه آغاز می‌شود: گروه اول زن و شوهرانی که دائم در بحث و جدل و درگیری‌اند و «کشتی زندگی‌شان به گِل نشسته است»؛ گروه دوم زوجینی که «قطار زندگی‌شان روی ریل درستی در حرکت است». پرسش این است که این تفاوت از کجا می‌آید.","s":"درس ۴، ص۷۰ کتاب؛ سطح B"},
+  {"t":"مثال","lvl":"B","h":"رانندگانی که جاده را «مثل کف دست» می‌شناسند","p":"بنابه گزارش‌های پلیس، یکی از عوامل بدترین تصادف‌های جاده‌ای، رانندگانی بوده‌اند که ادعا داشتند آن جاده را مثل کف دستشان می‌شناسند. اساساً توهم شناخت کامل انسان از خود و دیگران می‌تواند اولین گام در مسیر غفلت او از واقعیت خودش باشد.","s":"درس ۴، ص۸۳ کتاب؛ سطح B"},
+ ]},
+ {"lesson":"۵","title":"درس پنجم · معیارهای انتخاب همسر","book":"کتاب، ص۸۹ تا ۱۰۸","items":[
+  {"t":"آمار","h":"فراتحلیل مذهب و کاهش طلاق","p":"با فراتحلیل ۲ مطالعهٔ انجام‌شده دربارهٔ مذهب و احساس خشنودی، پژوهشگران بیان کردند خشنودی زناشویی تحت تأثیر مذهب قرار دارد و مذهب و پایبندی به آن می‌تواند میزان طلاق را در افراد مذهبی تا حدود نصف کاهش دهد.","s":"درس ۵، ص۹۳ کتاب؛ «فراتحلیل»: روش آماری و نظام‌مندِ ترکیب یافته‌های پژوهش‌های دیگر"},
+  {"t":"روایت","h":"«من تزوّج امرأةً لمالها...»","p":"«کسی که با زنی تنها به خاطر زیبایی‌اش ازدواج کند، در او امور ناخوشایند خواهد دید و کسی که با زنی به خاطر دین و ایمانش ازدواج کند، خداوند همهٔ آن امتیازات را برایش فراهم می‌کند».","ar":"مَنْ تَزَوَّجَ امْرَاَةً لِمالِها وَکَّلَهُ اللهُ اِلَیهِ، وَ مَنْ تَزَوَّجَها لِجَمالِها رَاَی فیها ما یَکْرَهُ، وَ مَنْ تَزَوَّجَها لِدینِها جَمَعَ اللهُ لَهُ ذلِک","s":"وسائل‌الشیعه، ج۲۰، ص۵۱؛ درس ۵، ص۹۴ کتاب"},
+  {"t":"روایت","h":"«تزوجوا سوداء ولوداً»","p":"«با زن سیاه‌چهرهٔ بارور ازدواج کنید و با زن زیبای نازا و عقیم ازدواج نکنید؛ چراکه من در روز قیامت به امت خود، حتی به سقط‌شدگان، افتخار می‌کنم».","ar":"تَزَوَّجوا سَوْداءَ وَلوداً وَ لا تَتَزَوَّجوا حَسْناءَ جَمیلًا عاقِراً فَاِنّی اُباهی بِکُمُ الاُمَمَ یَوْمَ الْقِیامَة","s":"وسائل‌الشیعه، ج۲۰، ص۵۴؛ درس ۵، ص۹۹ کتاب"},
+  {"t":"روایت","h":"«خضراء الدمن»","p":"«ای مردم! از سبزهٔ مزبله پرهیز کنید»؛ و در توضیح: «الْمَرْأَةُ الْحَسْناءُ فی مَنْبِتِ السَّوْء»؛ زن زیبارو و رعنا که در محیط نامناسب پرورش یافته و پروردهٔ محیط نامناسب اعتقادی و اخلاقی است.","ar":"اَیُّهَا النّاسُ اِیّاکُم وَ خَضْراءَ الدِّمَن","s":"کافی، ج۵، ص۳۳۲؛ درس ۵، ص۱۰۰ کتاب"},
+  {"t":"روایت","h":"«کلّ مولود یولد علی الفطرة...»","p":"«هر فرزند بر فطرت متولد می‌شود و ثانیاً پدر و مادرش او را یهودی، نصرانی یا مجوسی می‌نمایند»؛ پشتوانهٔ تأثیر پدر و مادر بر شخصیت فرزند و اهمیت تناسب خانوادگی.","ar":"کُلُّ مَوْلودٍ یولَدُ عَلَی الْفِطْرَةِ وَ اِنَّما اَبَواهُ یُهَوِّدانِهِ وَ یُنَصِّرانِهِ وَ یُمَجِّسانِه","s":"آداب راز و نیاز به درگاه بی‌نیاز، ج۱، ص۲۹۶؛ درس ۵، ص۱۰۱ کتاب"},
+  {"t":"روایت","h":"«اِسعَ عَلی عِیالِکَ...»","p":"امام صادق(ع) به یکی از یاران خود فرمود: «برای خانواده‌ات تلاش کن؛ مبادا آنان [به جای تو] برای تو کار و تلاش کنند».","ar":"اِسْعَ عَلی عِیالِکَ، وَ اِیّاکَ اَنْ یَکونوا هُمُ السُّعاةَ عَلَیْک","s":"الکافی، ج۵، ص۱۴۹، ح۶؛ درس ۵، ص۱۰۶ کتاب"},
+  {"t":"روایت","h":"امام باقر(ع)؛ مشارکت شیطان در مال حرام","p":"ذیل آیهٔ ۶۶ اسراء، شخصی از امام باقر(ع) معنی «شارِکْهُم فِی الاَموالِ وَ الاَولاد» را پرسید؛ امام فرمود: «هر مالی که از راه حرام و معصیت به دست آید، شیطان در آن مال شرکت دارد».","s":"درس ۵، ص۱۰۸ کتاب"},
+  {"t":"تاریخی","h":"امام سجاد(ع)، کنیز امام حسن(ع) و نامهٔ عبدالملک","p":"امام زین‌العابدین(ع) با کنیزی که از آنِ امام حسن(ع) بود ازدواج کرد؛ خبر به عبدالملک بن مروان رسید و در نامه‌ای تحقیرآمیز نوشت «تو شوهر کنیزان گشته‌ای». امام در پاسخ نوشت: «خداوند به وسیلهٔ اسلام پستی را بلندی بخشیده و ناقص را کامل گردانیده و از فرومایگی به ارجمندی رسانیده است؛ بنابراین مسلمانی پست نیست، بلکه پستی واقعی پستی جاهلیت است».","s":"درس ۵، ص۱۰۳ کتاب"},
+  {"t":"تاریخی","h":"زید بن حارثه و زینب بنت جحش","p":"رسول اکرم(ص) در امر ازدواج فرزندخواندهٔ خود زید بن حارثه — که بردهٔ آزادشدهٔ حضرت خدیجه(س) بود — با دخترعمهٔ خود زینب بنت جحش که از اشراف قریش بود، وساطت کرد. خداوند متعال پس از مشاهدهٔ کراهت زینب به دلیل اختلاف پایگاه اجتماعی، در آیه‌ای او را از مخالفت با حکم پیامبر برحذر داشت.","s":"درس ۵، ص۱۰۳ کتاب"},
+  {"t":"تاریخی","h":"ازدواج‌های ناهمسانِ توصیه‌شده","p":"در ازدواج پیامبر اکرم(ص) با حضرت خدیجه(س) و نیز ازدواج‌هایی که به توصیهٔ اولیای الهی صورت گرفته — جُوَیْبِر با ذَلْفا، مقداد بن اسود با ضباعه بنت عبدالمطلب، زید بن حارثه با زینب بنت جحش و مُنْجِح بن رِیاح با دختر ابی‌رافع — این نوع همسانی اقتصادی مشاهده نمی‌شود؛ از دیدگاه اسلام، همسانی اقتصادی معیاری اصلی در انتخاب همسر شمرده نمی‌شود.","s":"درس ۵، ص۱۰۷ کتاب"},
+  {"t":"روایت","h":"نامه به امام جواد(ع)","p":"شخصی برای امام جواد(ع) نوشت که کسی را همانند خود برای ازدواج دخترانش نمی‌یابد؛ حضرت فرمود: «این امر را معیار و شرط ازدواج دخترانت قرار نده؛ زیرا رسول اکرم(ص) فرمود: هرگاه کسی که اخلاق و دیانت او را می‌پسندید به خواستگاری نزد شما آمد، به وی همسر دهید؛ چراکه در غیر این صورت، فتنه و فساد بزرگی زمین را در برخواهد گرفت».","s":"عوالم العلوم، ج۲۳، ص۴۷۳؛ درس ۵، ص۱۰۴ کتاب"},
+  {"t":"روایت","h":"«همتای حضرت زهرا(س)»","p":"در روایتی تأکید شده است که اگر حضرت علی(ع) نبود، در میان انسان‌ها برای ازدواج با حضرت زهرا(س) همتایی یافت نمی‌شد؛ پشتوانهٔ همسانی در مراتب دینداری.","s":"من‌لایحضره‌الفقیه، ج۳، ص۳۹۳؛ درس ۵، ص۹۴ کتاب"},
+ ]},
+]
+
+# Distribution of the appendix groups over pages 31+ (page 31 starts with the
+# appendix title block, so it holds fewer cards). If all level-A items fit in
+# two pages this list has two entries; three entries are the allowed maximum.
+# Each page is a list of (group index, start, end) slices; end=None means "to the
+# end of the group". Slices let one lesson continue on the next appendix page.
+APPENDIX_PAGES = [
+    [(0, 0, None), (1, 0, None), (2, 0, 2)],
+    [(2, 2, None), (4, 0, None)],
 ]
 
 # HTML fragments for the twenty-three content/review pages.
@@ -408,6 +483,7 @@ PAGES.extend([
  </tbody></table>
  <div class="callout exam"><b>چک‌لیست ۱۰ دقیقهٔ آخر</b><p>پنج نیاز را از حفظ بگویید؛ ۱۰ کارکرد ازدواج را مرور کنید؛ شور عاطفی/ساختارسازی را مقایسه کنید؛ هفت معیار شناخت و چهار عامل شکست را نام ببرید؛ اصلی/فرعی و پنج حالت کشش را از هم تفکیک کنید.</p></div>
  <p class="small-note">مرور نهایی: تعریف‌ها، دسته‌بندی‌ها، عددها و معیارهای اصلی را یک‌بار دیگر از حفظ بازگو کنید.</p>
+ <p class="small-note appendix-pointer">آمارها و حکایت‌های تکمیلی: ضمیمه، ص۳۱</p>
  '''}
 ])
 
@@ -483,6 +559,7 @@ tr:last-child td{border-bottom:0}
 .callout.example b{color:#b45309}
 .callout.summary{background:#eafbf7;border-right-color:#14b8a6}
 .small-note{font-size:7.8pt;color:#64748b;margin-top:1.4mm!important}
+.appendix-pointer{color:#2563eb!important;font-weight:600;margin-top:2.4mm!important}
 .source{position:absolute;bottom:12mm;right:13mm;left:13mm;font-size:7pt;color:#8495ad;border-top:1px solid #dde7f2;padding-top:1.4mm;line-height:1.25}
 .footer{position:absolute;bottom:5.2mm;right:13mm;left:13mm;border-top:1px solid #dde7f2;padding-top:1.2mm;display:flex;justify-content:space-between;align-items:center;color:#8ba0ba;font-size:7.4pt;direction:rtl}
 .footer .brand{direction:ltr}
@@ -504,20 +581,20 @@ tr:last-child td{border-bottom:0}
 .cover .stat span{font-size:8pt;color:#c3d0df;margin-top:1mm}
 .cover .bottomnote{position:absolute;bottom:15mm;color:#b8c6d8;font-size:9pt}
 .cover .bottomnote b{color:#2dd4bf}
-.contents{padding-top:14mm}
-.contents h1{font-size:23pt;color:#0f172a;margin-bottom:3mm}
-.contents .toprule{height:1.2mm;background:linear-gradient(90deg,#2563eb,#14b8a6);border-radius:2mm;margin:0 0 8mm}
-.toc-row{display:grid;grid-template-columns:13mm 1fr 31mm;align-items:center;gap:3mm;padding:4.5mm 1mm;border-bottom:1px solid #dbe5f0;min-height:23mm}
+.contents{padding-top:11.5mm}
+.contents h1{font-size:22pt;color:#0f172a;margin-bottom:2.4mm}
+.contents .toprule{height:1.2mm;background:linear-gradient(90deg,#2563eb,#14b8a6);border-radius:2mm;margin:0 0 5mm}
+.toc-row{display:grid;grid-template-columns:13mm 1fr 31mm;align-items:center;gap:3mm;padding:2.6mm 1mm;border-bottom:1px solid #dbe5f0;min-height:16.6mm}
 .toc-num{width:11mm;height:11mm;line-height:11mm;padding:0;border-radius:3mm;background:linear-gradient(135deg,#2563eb,#14b8a6);color:#fff;font-weight:700;font-size:13pt;display:block;text-align:center;direction:ltr;unicode-bidi:isolate}
-.toc-title{font-size:11pt;font-weight:700;color:#0f172a}
-.toc-sub{font-size:7.8pt;color:#14a89c;margin-top:1mm}
+.toc-title{font-size:10.6pt;font-weight:700;color:#0f172a}
+.toc-sub{font-size:7.6pt;color:#14a89c;margin-top:.7mm}
 .toc-pages{font-size:8.5pt;color:#64748b;text-align:left}
-.roadmap{margin-top:6mm;background:#fff;border:1px solid #e2e8f0;border-radius:3mm;padding:3mm 4mm;box-shadow:0 1mm 3mm rgba(15,23,42,.035)}
+.roadmap{margin-top:4mm;background:#fff;border:1px solid #e2e8f0;border-radius:3mm;padding:3mm 4mm;box-shadow:0 1mm 3mm rgba(15,23,42,.035)}
 .roadmap h2{font-size:11pt;color:#2563eb;margin:0 0 2mm}
 .roadline{display:flex;gap:1.5mm;align-items:stretch}
 .roaditem{flex:1;background:#f5f9ff;border-radius:2mm;padding:2mm 1.5mm;text-align:center;font-size:7.25pt;color:#334155;line-height:1.35;border-top:1mm solid #14b8a6}
 .roaditem strong{display:block;color:#2563eb;font-size:8pt;margin-bottom:.5mm}
-.contents .small-note{margin-top:3mm!important}
+.contents .small-note{margin-top:2mm!important}
 .divider{padding:20mm 18mm;display:flex;flex-direction:column;align-items:center;text-align:center}
 .divider .pill{background:linear-gradient(90deg,#14b8a6,#2563eb);border-radius:100px;padding:1.5mm 6mm;font-size:8pt;color:white;z-index:1}
 .divider .icon{width:29mm;height:29mm;border-radius:50%;border:1px solid rgba(45,212,191,.65);display:flex;align-items:center;justify-content:center;margin:13mm 0 7mm;background:rgba(8,23,44,.6);z-index:1}
@@ -573,23 +650,49 @@ table{font-size:8.9pt}
 .divider .topic-row{height:11mm;line-height:11mm;width:100%;text-align:center;white-space:nowrap;direction:rtl}
 .divider .topic{display:inline-block;vertical-align:middle;padding:1.7mm 3mm;line-height:1.4;margin:0 1.1mm}
 .divider .bottomline{bottom:15mm;left:0;width:100%;text-align:center}
+/* ---------- Appendix (pages 31+): neutral cards, two RTL columns ---------- */
+.apx{padding:11mm 12mm 16mm}
+.apx-title{font-size:13.6pt;font-weight:700;color:#0f172a;line-height:1.3;margin:0 0 1.1mm}
+.apx-sub{font-size:9pt;color:#334155;margin:0 0 2mm;padding-bottom:1.4mm;border-bottom:1px solid #dbe5f0}
+.apx-flow{columns:2;column-gap:5mm;column-rule:.18mm solid #dbe5f0}
+.apx-card{break-inside:avoid;background:#fff;border:1px solid #e2e8f0;border-right:1mm solid #2563eb;border-radius:2mm;padding:1mm 1.7mm 1.1mm;margin:0 0 1.4mm;box-shadow:0 .5mm 1.1mm rgba(15,23,42,.03)}
+.apx-card.grey{border-right-color:#64748b}
+.apx-head{display:flex;align-items:center;gap:1.6mm;direction:rtl}
+.apx-type{font-size:7.6pt;font-weight:600;color:#475569;background:#f1f5f9;border:.4px solid #e2e8f0;border-radius:1.2mm;padding:.15mm 1.3mm;white-space:nowrap}
+.apx-h{font-size:8.9pt;font-weight:700;color:#0f172a;line-height:1.3}
+.apx-card p{font-size:8.6pt;line-height:1.45;margin:.4mm 0 0;text-align:justify}
+.apx-ar{font-family:AmiriQuran,serif;font-size:10.5pt;line-height:1.95;text-align:center;direction:rtl;display:block;margin:.7mm 0 0!important;color:#1e1b4b}
+.apx-src{font-size:8.5pt;color:#7c8ea6;margin-top:.3mm}
+.apx-src:before{content:"منبع: "}
 '''
+
+
+
+# Rewrite the local font/asset URLs so the file works from any checkout root.
+CSS = CSS.replace('file:///home/user/work/render/', BASE_URI + '/')
+
+
+def fa_digits(value):
+    """Convert latin digits of an int/str to Persian digits."""
+    table = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
+    return str(value).translate(table)
 
 
 def page_footer(n, label=''):
     return f'<div class="footer"><span class="brand">HumsYar | دانش خانواده و جمعیت</span><span class="page-no">{n}</span></div>'
 
 
-def cover_html():
-    return '''<section class="page cover">
-      <img class="logo" src="file:///home/user/work/render/assets/humsyar-logo.png" />
+def cover_html(total_pages):
+    logo_uri = (ASSETS / 'humsyar-logo.png').as_uri()
+    return f'''<section class="page cover">
+      <img class="logo" src="{logo_uri}" />
       <div class="rule"></div>
       <div class="category">جزوهٔ نکته‌محور امتحانی</div>
       <h1>دانش خانواده<br>و جمعیت</h1>
       <div class="subtitle">مرور نکات کلیدیِ پنج درس</div>
       <div class="bookmeta">تعریف‌ها، دسته‌بندی‌ها و نکته‌های مهم برای جمع‌بندی آزمون</div>
       <div class="stats">
-        <div class="stat"><strong>۳۰</strong><span>صفحهٔ جزوه</span></div>
+        <div class="stat"><strong>{fa_digits(total_pages)}</strong><span>صفحهٔ جزوه</span></div>
         <div class="stat"><strong>۵</strong><span>درس</span></div>
         <div class="stat"><strong>۱۰</strong><span>کارکرد ازدواج</span></div>
       </div>
@@ -609,6 +712,7 @@ def contents_html():
     for num,title,sub,pages in rows:
         html.append(f'<div class="toc-row"><div class="toc-num">{num}</div><div><div class="toc-title">{title}</div><div class="toc-sub">{sub}</div></div><div class="toc-pages">صفحهٔ {pages}</div></div>')
     html.append('<div class="toc-row"><div class="toc-num">✓</div><div><div class="toc-title">مرور فوق‌سریع شب امتحان</div><div class="toc-sub">فهرست‌ها، عددها، تعریف‌ها و نکات پرتکرار</div></div><div class="toc-pages">صفحهٔ ۲۹–۳۰</div></div>')
+    html.append('<div class="toc-row"><div class="toc-num">۷</div><div><div class="toc-title">ضمیمه: آمارها، رویدادها و مثال‌های مفهومی</div><div class="toc-sub">تکمیل‌کنندهٔ متن اصلی؛ برای مرور پس از خواندن درس‌ها</div></div><div class="toc-pages">صفحهٔ ۳۱–۳۲</div></div>')
     html.append('''<div class="roadmap"><h2>نقشهٔ مباحث</h2><div class="roadline">
     <div class="roaditem"><strong>۱ · چرا؟</strong>نیاز و آرامش</div><div class="roaditem"><strong>۲ · چه آسیب؟</strong>تأخیر</div><div class="roaditem"><strong>۳ · چه فایده؟</strong>کارکردها</div><div class="roaditem"><strong>۴ · چگونه؟</strong>آمادگی و شناخت</div><div class="roaditem"><strong>۵ · با چه معیار؟</strong>انتخاب همسر</div>
     </div></div><div class="callout definition" style="margin-top:3mm"><b>روش مرور</b><p>ابتدا تعریف‌ها و دسته‌بندی‌ها را بخوانید؛ سپس نکته‌های عددی و پیوندهای مفهومی را مرور کنید.</p></div><p class="small-note">شماره‌های سمت راست، صفحات همین جزوه را نشان می‌دهند.</p>''')
@@ -635,6 +739,41 @@ def divider_html(d, index):
     </section>'''
 
 
+def appendix_html():
+    """Build the appendix pages (31+) from APPENDIX / APPENDIX_PAGES.
+
+    Level-B items are dropped automatically when APPENDIX_PAGES does not ask
+    for them; the page slices keep each appendix page balanced.
+    """
+    pages = []
+    for pi, slices in enumerate(APPENDIX_PAGES):
+        num = 31 + pi
+        cards = []
+        for gi, start, end in slices:
+            g = APPENDIX[gi]
+            items = [it for it in g['items'] if it.get('lvl') != 'B']
+            chunk = items[start:end]
+            if not chunk:
+                continue
+            suffix = ' (ادامه)' if start else ''
+            cards.append(f'<h2 class="section">{g["title"]}{suffix}</h2>')
+            for it in chunk:
+                cls = ' grey' if it['t'] in ('روایت', 'نقل', 'استدلال') else ''
+                ar = f'<p class="apx-ar" dir="rtl" lang="ar">{it["ar"]}</p>' if it.get('ar') else ''
+                cards.append(
+                    f'<div class="apx-card{cls}">'
+                    f'<div class="apx-head"><span class="apx-type">{it["t"]}</span><b class="apx-h">{it["h"]}</b></div>'
+                    f'{ar}<p>{it["p"]}</p>'
+                    f'<div class="apx-src">({it["s"]})</div></div>')
+        head = ''
+        if pi == 0:
+            head = ('<h1 class="apx-title">ضمیمه: آمارها، رویدادها، شخصیت‌های تاریخی و مثال‌های مفهومی</h1>'
+                    '<div class="apx-sub">تکمیل‌کنندهٔ متن اصلی؛ برای مرور پس از خواندن درس‌ها.</div>')
+        pages.append(f'<section class="page apx">{head}<div class="apx-flow">{"".join(cards)}</div>'
+                     f'{page_footer(str(num))}</section>')
+    return ''.join(pages)
+
+
 def content_html(item, num):
     title = item['title']
     body = item['body']
@@ -646,12 +785,15 @@ def content_html(item, num):
       {page_footer(str(num), source)}
     </section>'''
 
+APPENDIX_PAGE_NUMBERS = [31 + i for i in range(len(APPENDIX_PAGES))]
+TOTAL_PAGES = 30 + len(APPENDIX_PAGES)
+
 html_parts = ["<!doctype html><html lang='fa' dir='rtl'><head><meta charset='utf-8'><title>HumsYar — دانش خانواده و جمعیت</title><style>", CSS, "</style></head><body>"]
 page_no = 1
 lesson_idx = 0
 for item in PAGES:
     if item['kind']=='cover':
-        html_parts.append(cover_html())
+        html_parts.append(cover_html(TOTAL_PAGES))
     elif item['kind']=='contents':
         html_parts.append(contents_html())
     elif item['kind']=='divider':
@@ -660,10 +802,12 @@ for item in PAGES:
     else:
         html_parts.append(content_html(item,page_no))
     page_no += 1
+# Appendix: pages after the main 30 pages (allowed change, no rewrite of 1-30).
+html_parts.append(appendix_html())
 html_parts.append('</body></html>')
 html_text=''.join(html_parts)
 html_path=WORK/'render'/'booklet.html'
 html_path.parent.mkdir(parents=True,exist_ok=True)
 html_path.write_text(html_text,encoding='utf-8')
 HTML(string=html_text, base_url=str(WORK)).write_pdf(str(OUT), presentational_hints=True, pdf_identifier=b'HumsYar-Family-Population-2026')
-print(f'Wrote {OUT} ({OUT.stat().st_size:,} bytes), planned pages={len(PAGES)}')
+print(f'Wrote {OUT} ({OUT.stat().st_size:,} bytes), planned pages={len(PAGES)} + appendix {len(APPENDIX_PAGES)} = {TOTAL_PAGES}')
