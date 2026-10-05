@@ -1,11 +1,11 @@
-HTTP/1.1 200 OK
+HTTP/1.1 302 Found
 Cache-Control: max-age=0
-Content-Type: text/html; charset=utf-8
-Set-Cookie: verified=2024-05-24; Path=/; Expires=Wed, 04 Nov 2026 12:54:20 GMT; HttpOnly; Secure
+Location: https://storage.filebin.net/filebin/a11894c2bf967d435a47be0af9e388c417ec236ef484a6fc0b086e2b233ef491?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=GK352fd2505074fc9dde7fd2cb%2F20261005%2Fhel1-dc4%2Fs3%2Faws4_request&X-Amz-Date=20261005T125457Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&response-cache-control=max-age%3D900&response-content-disposition=inline%3B%20filename%3D%22workspace-01a10303-8a6f-7ca4-a4d4-520958103cc2.zip%22&response-content-type=application%2Fzip&x-id=GetObject&X-Amz-Signature=7d90615b09c22e5cd8db29ab3508630ea8b50e34595ff43c4a8106723df427d3
 Vary: Accept-Encoding
 X-Robots-Tag: noindex
-Date: Mon, 05 Oct 2026 12:54:22 GMT
-X-Varnish: 345725089
+Date: Mon, 05 Oct 2026 12:54:59 GMT
+Content-Length: 0
+X-Varnish: 345356934
 Age: 0
 Via: 1.1 varnish (Varnish/6.0)
 Access-Control-Allow-Origin: *
@@ -14,7 +14,27 @@ Referrer-Policy: origin
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-Report-Abuse: abuse@filebin.net
+Connection: keep-alive
+
+HTTP/1.1 200 OK
 Accept-Ranges: bytes
-Transfer-Encoding: chunked
+Cache-Control: max-age=900
+Content-Disposition: inline; filename="workspace-01a10303-8a6f-7ca4-a4d4-520958103cc2.zip"
+Content-Length: 24160401
+Content-Type: application/zip
+Etag: "c86022eb443b4bb86bec00c042d905d2"
+Last-Modified: Sat, 03 Oct 2026 21:40:55 GMT
+X-Request-Id: 55a7167ec36d21ab
+Date: Mon, 05 Oct 2026 12:55:00 GMT
+X-Varnish: 345899098
+Age: 0
+Via: 1.1 varnish (Varnish/6.0)
+Access-Control-Allow-Origin: *
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Referrer-Policy: origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-Report-Abuse: abuse@filebin.net
+Content-Security-Policy: script-src 'none'; script-src-elem 'none'; script-src-attr 'none'
 Connection: keep-alive
 
