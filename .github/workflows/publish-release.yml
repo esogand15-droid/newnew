@@ -1,0 +1,35 @@
+name: publish-release
+
+on:
+  push:
+    branches: [arena/01a10c1f-newnew]
+    paths:
+      - '.relay/trigger-release.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: arena/01a10c1f-newnew
+          fetch-depth: 1
+      - name: Publish release with assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -x
+          TAG="appendix-v32"
+          TITLE="جزوهٔ HumsYar با ضمیمه — ۳۲ صفحه"
+          FILES="HumsYar_Danesh_Khanevadeh.pdf HumsYar_Danesh_Khanevadeh_v30_backup.pdf QC_REPORT.md qc/appendix_audit.md"
+          ls -la $FILES
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" $FILES --clobber
+          else
+            gh release create "$TAG" --target arena/01a10c1f-newnew --title "$TITLE" \
+              --notes-file .relay/release-notes.md $FILES
+          fi
+          gh release view "$TAG" --json url,assets --jq '{url:.url, assets:[.assets[].name]}'
