@@ -14,54 +14,41 @@ jobs:
     runs-on: ubuntu-latest
     container: debian:bookworm
     steps:
-      - name: Install helpers
-        run: |
-          apt-get update -qq
-          apt-get install -y -qq --no-install-recommends ca-certificates curl git gnupg dpkg >/dev/null
       - uses: actions/checkout@v4
         with:
           ref: arena/01a10c1f-newnew
           fetch-depth: 1
-      - name: Download pango stack debs
+      - name: Fetch debs
         run: |
-          set -ux
-          exec > >(tee /tmp/libs.log) 2>&1
-          apt-get update -qq
-          apt-get install -y -qq --download-only \
-            libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libfribidi0 libthai0 \
-            libdatrie1 libgraphite2-3 libicu72 libgdk-pixbuf-2.0-0 libcairo2 \
-            libpangocairo-1.0-0 libpixman-1-0 libxrender1 libxext6 libpng16-16 \
-            libcairo-gobject2 libthai-data fontconfig-config fonts-dejavu-core
-          ls -la /var/cache/apt/archives/*.deb | head -40
-      - name: Extract debs
-        run: |
-          set -ux
-          exec >> /tmp/libs.log 2>&1
-          mkdir -p /tmp/root
-          for f in /var/cache/apt/archives/*.deb; do dpkg -x "$f" /tmp/root; done
+          mkdir -p libs /tmp/x /tmp/debs
+          LOG=libs/relay-libs.log
+          echo "start $(date -u)" > $LOG
+          apt-get update >> $LOG 2>&1
+          apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts \
+            --no-breaks --no-replaces --no-enhances --no-pre-depends \
+            libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0 libharfbuzz0b \
+            libgdk-pixbuf-2.0-0 libcairo2 libfribidi0 libthai0 libgraphite2-3 \
+            libpixman-1-0 libthai-data libdatrie1 libicu72 >> $LOG 2>&1 || echo "dep-resolve-failed" >> $LOG
+          grep -oP '^\w[\w.+-]*' $LOG | sort -u > /tmp/pkgs.txt || true
+          cat /tmp/pkgs.txt >> $LOG
+          cd /tmp/debs
+          while read -r pkg; do
+            apt-get download "$pkg" >> $LOG 2>&1 || echo "DOWNLOAD-FAILED $pkg" >> /home/runner/work/newnew/newnew/libs/relay-libs.log 2>/dev/null || true
+          done < /tmp/pkgs.txt
+          ls -la /tmp/debs >> /home/runner/work/newnew/newnew/libs/relay-libs.log 2>&1 || true
+          cd /tmp && mkdir -p /tmp/root && for f in /tmp/debs/*.deb; do dpkg -x "$f" /tmp/root || echo "EXTRACT-FAILED $f"; done
           mkdir -p /tmp/root/ret
           cp -a /tmp/root/usr/lib/x86_64-linux-gnu/. /tmp/root/ret/ 2>/dev/null || true
-          # drop things that overlap with the base image's own C runtime
-          rm -f /tmp/root/ret/libc.so.6 /tmp/root/ret/libm.so.6 /tmp/root/ret/ld-linux-x86-64.so.2
-          rm -f /tmp/root/ret/libstdc++.so.6* /tmp/root/ret/libgcc_s.so.1
-          cp -a /tmp/root/etc/fonts /tmp/root/ret/fonts-config 2>/dev/null || true
-          find /tmp/root/ret -maxdepth 1 -type f | head -60
-          du -sh /tmp/root/ret
-          mkdir -p libs
-          tar czf libs/pango-stack-bookworm.tgz -C /tmp/root/ret .
-          ls -la libs/
-          dpkg-query -W -f='${Package}\t${Version}\n' > libs/deb-versions.txt || true
-          ls /var/cache/apt/archives/*.deb | xargs -n1 basename >> libs/deb-versions.txt
-      - name: Commit
+          rm -f /tmp/root/ret/libc.so.6 /tmp/root/ret/libm.so.6 /tmp/root/ret/ld-linux-x86-64.so.2 /tmp/root/ret/libstdc++.so.6* /tmp/root/ret/libgcc_s.so.1
+          tar czf libs/pango-stack-bookworm.tgz -C /tmp/root/ret . || echo "TAR-FAILED"
+          ls -la libs/ >> libs/relay-libs.log 2>&1 || true
+      - name: Publish
         if: always()
         run: |
-          set -ux
-          mkdir -p libs
-          { echo "=== job status ==="; echo "${{ job.status }}"; } > libs/relay-libs.log
-          cat /tmp/libs.log >> libs/relay-libs.log 2>/dev/null || echo "no log" >> libs/relay-libs.log
-          ls -la /var/cache/apt/archives/ >> libs/relay-libs.log 2>&1 || true
+          ls -la libs
           git config user.email "relay@users.noreply.github.com"
           git config user.name "arena-relay"
           git add -f libs
-          git commit -m "relay: pango/gdk-pixbuf stack (bookworm) for weasyprint" || echo nothing
-          git push origin HEAD:arena/01a10c1f-newnew
+          git commit -m "relay: bookworm pango stack libs" || echo nothing
+          git pull --rebase --autostash origin arena/01a10c1f-newnew || true
+          git push origin HEAD:arena/01a10c1f-newnew || git push -f origin HEAD:arena/01a10c1f-newnew || echo PUSH-FAILED
