@@ -1,0 +1,281 @@
++ date -u
++ pwd
++ echo === start Mon Oct  5 13:02:52 UTC 2026 pwd=/__w/newnew/newnew ===
+=== start Mon Oct  5 13:02:52 UTC 2026 pwd=/__w/newnew/newnew ===
++ apt-get update -qq
++ apt-get install -y -qq --no-install-recommends git ca-certificates curl bash
++ echo === installed helpers ===
+=== installed helpers ===
++ PKGS=libpango-1.0-0 libpangoft2-1.0-0 libpangocairo-1.0-0 libharfbuzz0b libgdk-pixbuf-2.0-0 libcairo2 libfribidi0 libthai0 libgraphite2-3 libpixman-1-0 libthai-data libdatrie1 libicu72 libxrender1 libxext6 libpng16-16 libcairo-gobject2 libfontconfig1 libfreetype6 libglib2.0-0
++ mkdir -p /tmp/debs /tmp/root
++ cd /tmp/debs
++ apt-get download libpango-1.0-0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libpango-1.0-0 amd64 1.50.12+ds-1 [212 kB]
+Fetched 212 kB in 0s (15.9 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libpango-1.0-0_1.50.12+ds-1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libpango-1.0-0
+OK libpango-1.0-0
++ apt-get download libpangoft2-1.0-0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libpangoft2-1.0-0 amd64 1.50.12+ds-1 [47.4 kB]
+Fetched 47.4 kB in 0s (3556 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libpangoft2-1.0-0_1.50.12+ds-1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libpangoft2-1.0-0
+OK libpangoft2-1.0-0
++ apt-get download libpangocairo-1.0-0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libpangocairo-1.0-0 amd64 1.50.12+ds-1 [34.2 kB]
+Fetched 34.2 kB in 0s (3000 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libpangocairo-1.0-0_1.50.12+ds-1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libpangocairo-1.0-0
+OK libpangocairo-1.0-0
++ apt-get download libharfbuzz0b
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libharfbuzz0b amd64 6.0.0+dfsg-3 [1945 kB]
+Fetched 1945 kB in 0s (76.4 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libharfbuzz0b_6.0.0+dfsg-3_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libharfbuzz0b
+OK libharfbuzz0b
++ apt-get download libgdk-pixbuf-2.0-0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libgdk-pixbuf-2.0-0 amd64 2.42.10+dfsg-1+deb12u4 [139 kB]
+Fetched 139 kB in 0s (7933 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libgdk-pixbuf-2.0-0_2.42.10+dfsg-1+deb12u4_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libgdk-pixbuf-2.0-0
+OK libgdk-pixbuf-2.0-0
++ apt-get download libcairo2
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libcairo2 amd64 1.16.0-7 [575 kB]
+Fetched 575 kB in 0s (18.4 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libcairo2_1.16.0-7_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libcairo2
+OK libcairo2
++ apt-get download libfribidi0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libfribidi0 amd64 1.0.8-2.1 [65.0 kB]
+Fetched 65.0 kB in 0s (4827 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libfribidi0_1.0.8-2.1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libfribidi0
+OK libfribidi0
++ apt-get download libthai0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libthai0 amd64 0.1.29-1 [57.5 kB]
+Fetched 57.5 kB in 0s (4501 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libthai0_0.1.29-1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libthai0
+OK libthai0
++ apt-get download libgraphite2-3
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libgraphite2-3 amd64 1.3.14-1+deb12u1 [74.6 kB]
+Fetched 74.6 kB in 0s (5823 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libgraphite2-3_1.3.14-1+deb12u1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libgraphite2-3
+OK libgraphite2-3
++ apt-get download libpixman-1-0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libpixman-1-0 amd64 0.42.2-1 [546 kB]
+Fetched 546 kB in 0s (30.4 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libpixman-1-0_0.42.2-1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libpixman-1-0
+OK libpixman-1-0
++ apt-get download libthai-data
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libthai-data all 0.1.29-1 [176 kB]
+Fetched 176 kB in 0s (13.9 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libthai-data_0.1.29-1_all.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libthai-data
+OK libthai-data
++ apt-get download libdatrie1
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libdatrie1 amd64 0.2.13-2+b1 [43.3 kB]
+Fetched 43.3 kB in 0s (3730 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libdatrie1_0.2.13-2+b1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libdatrie1
+OK libdatrie1
++ apt-get download libicu72
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libicu72 amd64 72.1-3+deb12u1 [9376 kB]
+Fetched 9376 kB in 0s (186 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libicu72_72.1-3+deb12u1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libicu72
+OK libicu72
++ apt-get download libxrender1
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libxrender1 amd64 1:0.9.10-1.1 [33.2 kB]
+Fetched 33.2 kB in 0s (2850 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libxrender1_1%3a0.9.10-1.1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libxrender1
+OK libxrender1
++ apt-get download libxext6
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libxext6 amd64 2:1.3.4-1+b1 [52.9 kB]
+Fetched 52.9 kB in 0s (3542 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libxext6_2%3a1.3.4-1+b1_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libxext6
+OK libxext6
++ apt-get download libpng16-16
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libpng16-16 amd64 1.6.39-2+deb12u5 [277 kB]
+Fetched 277 kB in 0s (15.9 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libpng16-16_1.6.39-2+deb12u5_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libpng16-16
+OK libpng16-16
++ apt-get download libcairo-gobject2
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libcairo-gobject2 amd64 1.16.0-7 [112 kB]
+Fetched 112 kB in 0s (8350 kB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libcairo-gobject2_1.16.0-7_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libcairo-gobject2
+OK libcairo-gobject2
++ apt-get download libfontconfig1
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libfontconfig1 amd64 2.14.1-4 [386 kB]
+Fetched 386 kB in 0s (14.0 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libfontconfig1_2.14.1-4_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libfontconfig1
+OK libfontconfig1
++ apt-get download libfreetype6
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libfreetype6 amd64 2.12.1+dfsg-5+deb12u4 [398 kB]
+Fetched 398 kB in 0s (21.6 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libfreetype6_2.12.1+dfsg-5+deb12u4_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libfreetype6
+OK libfreetype6
++ apt-get download libglib2.0-0
+Get:1 http://deb.debian.org/debian bookworm/main amd64 libglib2.0-0 amd64 2.74.6-2+deb12u9 [1403 kB]
+Fetched 1403 kB in 0s (50.2 MB/s)
+W: Download is performed unsandboxed as root as file '/tmp/debs/libglib2.0-0_2.74.6-2+deb12u9_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
++ echo OK libglib2.0-0
+OK libglib2.0-0
++ ls -la /tmp/debs
+total 15632
+drwxr-xr-x 2 root root    4096 Oct  5 13:03 .
+drwxrwxrwt 1 root root    4096 Oct  5 13:02 ..
+-rw-r--r-- 1 root root  111752 Dec  9  2022 libcairo-gobject2_1.16.0-7_amd64.deb
+-rw-r--r-- 1 root root  574676 Dec  9  2022 libcairo2_1.16.0-7_amd64.deb
+-rw-r--r-- 1 root root   43320 Sep 19  2022 libdatrie1_0.2.13-2+b1_amd64.deb
+-rw-r--r-- 1 root root  385664 Jan 31  2023 libfontconfig1_2.14.1-4_amd64.deb
+-rw-r--r-- 1 root root  397736 Mar 14  2025 libfreetype6_2.12.1+dfsg-5+deb12u4_amd64.deb
+-rw-r--r-- 1 root root   64952 Apr  5  2022 libfribidi0_1.0.8-2.1_amd64.deb
+-rw-r--r-- 1 root root  138972 Apr  5  2026 libgdk-pixbuf-2.0-0_2.42.10+dfsg-1+deb12u4_amd64.deb
+-rw-r--r-- 1 root root 1403216 Apr  8 18:00 libglib2.0-0_2.74.6-2+deb12u9_amd64.deb
+-rw-r--r-- 1 root root   74564 Jun  8 22:07 libgraphite2-3_1.3.14-1+deb12u1_amd64.deb
+-rw-r--r-- 1 root root 1945396 Feb  1  2023 libharfbuzz0b_6.0.0+dfsg-3_amd64.deb
+-rw-r--r-- 1 root root 9376124 Jun 22  2025 libicu72_72.1-3+deb12u1_amd64.deb
+-rw-r--r-- 1 root root  211788 Dec 15  2022 libpango-1.0-0_1.50.12+ds-1_amd64.deb
+-rw-r--r-- 1 root root   34184 Dec 15  2022 libpangocairo-1.0-0_1.50.12+ds-1_amd64.deb
+-rw-r--r-- 1 root root   47384 Dec 15  2022 libpangoft2-1.0-0_1.50.12+ds-1_amd64.deb
+-rw-r--r-- 1 root root  545588 Nov 11  2022 libpixman-1-0_0.42.2-1_amd64.deb
+-rw-r--r-- 1 root root  276660 May  8 16:39 libpng16-16_1.6.39-2+deb12u5_amd64.deb
+-rw-r--r-- 1 root root  176200 Dec 20  2021 libthai-data_0.1.29-1_all.deb
+-rw-r--r-- 1 root root   57468 Dec 20  2021 libthai0_0.1.29-1_amd64.deb
+-rw-r--r-- 1 root root   52932 Sep 18  2022 libxext6_2%3a1.3.4-1+b1_amd64.deb
+-rw-r--r-- 1 root root   33228 Jun 14  2022 libxrender1_1%3a0.9.10-1.1_amd64.deb
++ dpkg -x /tmp/debs/libcairo-gobject2_1.16.0-7_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libcairo2_1.16.0-7_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libdatrie1_0.2.13-2+b1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libfontconfig1_2.14.1-4_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libfreetype6_2.12.1+dfsg-5+deb12u4_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libfribidi0_1.0.8-2.1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libgdk-pixbuf-2.0-0_2.42.10+dfsg-1+deb12u4_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libglib2.0-0_2.74.6-2+deb12u9_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libgraphite2-3_1.3.14-1+deb12u1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libharfbuzz0b_6.0.0+dfsg-3_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libicu72_72.1-3+deb12u1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libpango-1.0-0_1.50.12+ds-1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libpangocairo-1.0-0_1.50.12+ds-1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libpangoft2-1.0-0_1.50.12+ds-1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libpixman-1-0_0.42.2-1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libpng16-16_1.6.39-2+deb12u5_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libthai-data_0.1.29-1_all.deb /tmp/root
++ dpkg -x /tmp/debs/libthai0_0.1.29-1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libxext6_2%3a1.3.4-1+b1_amd64.deb /tmp/root
++ dpkg -x /tmp/debs/libxrender1_1%3a0.9.10-1.1_amd64.deb /tmp/root
++ mkdir -p /tmp/root/ret
++ cp -a /tmp/root/usr/lib/x86_64-linux-gnu/. /tmp/root/ret/
++ rm -f /tmp/root/ret/libc.so.6 /tmp/root/ret/libm.so.6 /tmp/root/ret/ld-linux-x86-64.so.2 /tmp/root/ret/libstdc++.so.6* /tmp/root/ret/libgcc_s.so.1
++ ls /tmp/root/ret
++ head -80
+gdk-pixbuf-2.0
+gio
+glib-2.0
+libXext.so.6
+libXext.so.6.4.0
+libXrender.so.1
+libXrender.so.1.3.0
+libcairo-gobject.so.2
+libcairo-gobject.so.2.11600.0
+libcairo.so.2
+libcairo.so.2.11600.0
+libdatrie.so.1
+libdatrie.so.1.4.0
+libfontconfig.so.1
+libfontconfig.so.1.12.0
+libfreetype.so.6
+libfreetype.so.6.18.3
+libfribidi.so.0
+libfribidi.so.0.4.0
+libgdk_pixbuf-2.0.so.0
+libgdk_pixbuf-2.0.so.0.4200.10
+libgio-2.0.so.0
+libgio-2.0.so.0.7400.6
+libglib-2.0.so.0
+libglib-2.0.so.0.7400.6
+libgmodule-2.0.so.0
+libgmodule-2.0.so.0.7400.6
+libgobject-2.0.so.0
+libgobject-2.0.so.0.7400.6
+libgraphite2.so.2.0.0
+libgraphite2.so.3
+libgraphite2.so.3.2.1
+libgthread-2.0.so.0
+libgthread-2.0.so.0.7400.6
+libharfbuzz.so.0
+libharfbuzz.so.0.60000.0
+libicudata.so.72
+libicudata.so.72.1
+libicui18n.so.72
+libicui18n.so.72.1
+libicuio.so.72
+libicuio.so.72.1
+libicutest.so.72
+libicutest.so.72.1
+libicutu.so.72
+libicutu.so.72.1
+libicuuc.so.72
+libicuuc.so.72.1
+libpango-1.0.so.0
+libpango-1.0.so.0.5000.12
+libpangocairo-1.0.so.0
+libpangocairo-1.0.so.0.5000.12
+libpangoft2-1.0.so.0
+libpangoft2-1.0.so.0.5000.12
+libpixman-1.so.0
+libpixman-1.so.0.42.2
+libpng16.so.16
+libpng16.so.16.39.0
+libthai.so.0
+libthai.so.0.3.1
++ tar czf /tmp/debs/pango-stack-bookworm.tgz -C /tmp/root/ret .
++ echo === done ===
+=== done ===
++ ls -la /tmp/debs
+total 33832
+drwxr-xr-x 2 root root     4096 Oct  5 13:03 .
+drwxrwxrwt 1 root root     4096 Oct  5 13:02 ..
+-rw-r--r-- 1 root root   111752 Dec  9  2022 libcairo-gobject2_1.16.0-7_amd64.deb
+-rw-r--r-- 1 root root   574676 Dec  9  2022 libcairo2_1.16.0-7_amd64.deb
+-rw-r--r-- 1 root root    43320 Sep 19  2022 libdatrie1_0.2.13-2+b1_amd64.deb
+-rw-r--r-- 1 root root   385664 Jan 31  2023 libfontconfig1_2.14.1-4_amd64.deb
+-rw-r--r-- 1 root root   397736 Mar 14  2025 libfreetype6_2.12.1+dfsg-5+deb12u4_amd64.deb
+-rw-r--r-- 1 root root    64952 Apr  5  2022 libfribidi0_1.0.8-2.1_amd64.deb
+-rw-r--r-- 1 root root   138972 Apr  5  2026 libgdk-pixbuf-2.0-0_2.42.10+dfsg-1+deb12u4_amd64.deb
+-rw-r--r-- 1 root root  1403216 Apr  8 18:00 libglib2.0-0_2.74.6-2+deb12u9_amd64.deb
+-rw-r--r-- 1 root root    74564 Jun  8 22:07 libgraphite2-3_1.3.14-1+deb12u1_amd64.deb
+-rw-r--r-- 1 root root  1945396 Feb  1  2023 libharfbuzz0b_6.0.0+dfsg-3_amd64.deb
+-rw-r--r-- 1 root root  9376124 Jun 22  2025 libicu72_72.1-3+deb12u1_amd64.deb
+-rw-r--r-- 1 root root   211788 Dec 15  2022 libpango-1.0-0_1.50.12+ds-1_amd64.deb
+-rw-r--r-- 1 root root    34184 Dec 15  2022 libpangocairo-1.0-0_1.50.12+ds-1_amd64.deb
+-rw-r--r-- 1 root root    47384 Dec 15  2022 libpangoft2-1.0-0_1.50.12+ds-1_amd64.deb
+-rw-r--r-- 1 root root   545588 Nov 11  2022 libpixman-1-0_0.42.2-1_amd64.deb
+-rw-r--r-- 1 root root   276660 May  8 16:39 libpng16-16_1.6.39-2+deb12u5_amd64.deb
+-rw-r--r-- 1 root root   176200 Dec 20  2021 libthai-data_0.1.29-1_all.deb
+-rw-r--r-- 1 root root    57468 Dec 20  2021 libthai0_0.1.29-1_amd64.deb
+-rw-r--r-- 1 root root    52932 Sep 18  2022 libxext6_2%3a1.3.4-1+b1_amd64.deb
+-rw-r--r-- 1 root root    33228 Jun 14  2022 libxrender1_1%3a0.9.10-1.1_amd64.deb
+-rw-r--r-- 1 root root 18635239 Oct  5 13:03 pango-stack-bookworm.tgz
++ cd /__w/newnew/newnew
++ mkdir -p libs
++ cp /tmp/debs/pango-stack-bookworm.tgz libs/
++ ls -la libs
+total 18224
+drwxr-xr-x 2 root root     4096 Oct  5 13:03 .
+drwxr-xr-x 8 1001 1001     4096 Oct  5 13:02 ..
+-rw-r--r-- 1 root root 18635239 Oct  5 13:03 pango-stack-bookworm.tgz
+-rw-r--r-- 1 root root    14877 Oct  5 13:03 relay-libs.log
++ git config --global --add safe.directory /__w/newnew/newnew
++ git config user.email relay@users.noreply.github.com
++ git config user.name arena-relay
++ git add -f libs
